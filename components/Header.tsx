@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const categories = [
   "Smartphones",
@@ -14,12 +15,14 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-5">
         <div className="flex items-center justify-between py-4">
           <Link href="/" className="flex items-baseline gap-2 group">
-            <span
-              className="font-[var(--font-display)] text-3xl md:text-4xl font-semibold tracking-tight uppercase"
-              style={{ fontStretch: "condensed" }}
-            >
-              Flossatech
-            </span>
+            <Image
+              src="/images/brand/logo-lockup.png"
+              alt="Flossatech"
+              width={744}
+              height={459}
+              priority
+              className="h-9 md:h-11 w-auto"
+            />
             <span className="hidden sm:inline text-[10px] uppercase tracking-[0.2em] text-[var(--color-muted)] font-[var(--font-mono)] border border-[var(--color-line)] px-1.5 py-0.5 rounded">
               Read the specs
             </span>
