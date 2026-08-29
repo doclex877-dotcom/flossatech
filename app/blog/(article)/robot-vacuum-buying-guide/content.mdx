@@ -1,0 +1,182 @@
+import ArticleHeader from "@/components/ArticleHeader";
+import TOC from "@/components/TOC";
+import BarChart from "@/components/BarChart";
+import Callout from "@/components/Callout";
+
+<ArticleHeader
+  title="Robot Vacuums in 2026: What the Spec Sheet Doesn't Tell You"
+  dek="Suction-power ratings (Pa) aren't standardized across brands. A breakdown of what actually predicts real cleaning performance."
+  category="Smart Home"
+  date="2026-08-18"
+  readMins={21}
+  verdictScore={81}
+/>
+
+<TOC
+  items={[
+    { id: "pa-arms-race", text: "The Pa arms race" },
+    { id: "what-pa-measures", text: "What a pascal actually measures" },
+    { id: "the-catch", text: "The catch: it's self-reported, and measured in the wrong place" },
+    { id: "the-flooring-tiers", text: "How much Pa you actually need, by flooring type" },
+    { id: "the-roomba-counterexample", text: "The counterexample that breaks the whole spec sheet" },
+    { id: "what-independent-testing-checks", text: "What independent testing actually checks" },
+    { id: "reading-a-listing", text: "How to read a robot vacuum listing" },
+    { id: "bottom-line", text: "Bottom line" },
+  ]}
+/>
+
+<h2 id="pa-arms-race">The Pa arms race</h2>
+
+If you shopped for a robot vacuum in 2020, a strong model advertised around
+2,000 pascals (Pa) of suction. Shop today and you'll see listings for
+18,000Pa, 22,000Pa, even the Dreame X60 Max Ultra's advertised **35,000Pa**
+and the Ecovacs T90 Pro Omni's **30,000Pa**. That's roughly a
+**15-to-17-fold increase in the advertised number** in six years — and
+nothing about how a robot vacuum physically works has changed anywhere
+near that dramatically.
+
+That gap between the marketing number and the underlying engineering is
+the whole story of this article: Pa is a real, measurable unit of
+pressure, brands aren't fabricating it, and it still isn't a reliable way
+to predict which robot vacuum will actually clean your floor better.
+
+<h2 id="what-pa-measures">What a pascal actually measures</h2>
+
+A pascal is the SI unit of pressure — one newton of force per square
+meter. Standard atmospheric pressure is about **101,325 Pa**. When a robot
+vacuum is rated at, say, 6,000Pa, that means its motor creates a
+pressure differential of roughly 6% relative to atmospheric pressure
+inside its airflow path. Outside air rushes in to fill that low-pressure
+zone, carrying dust and debris with it into the dustbin.
+
+That's a real physical mechanism, and a higher number does mean the motor
+is creating a stronger pressure gap, all else being equal. The problem is
+that "all else" is almost never equal between two different robot
+vacuums.
+
+<h2 id="the-catch">The catch: it's self-reported, and measured in the wrong place</h2>
+
+Two structural problems undercut the usefulness of Pa as a shopping spec:
+
+1. **There's no standardized test protocol.** Unlike, say, a phone's
+   USB-PD wattage rating (governed by the USB-IF's certification
+   process), robot vacuum Pa figures are self-reported by each
+   manufacturer, measured under conditions that vary brand to brand.
+2. **It's measured at the motor, not at the floor.** The pressure a robot
+   vacuum's motor generates internally is meaningfully higher than what
+   actually reaches the nozzle at the floor — industry commentary
+   generally puts the real-world gap at roughly **20–40% lower** than the
+   advertised figure, lost to airflow-path resistance, filter condition,
+   and seal quality between the brush housing and the floor.
+
+<Callout kind="verified" title="This isn't a brand accusation">
+Every major manufacturer — Roborock, Ecovacs, Eufy, Dreame — uses the same
+Pa convention and the same lack of a shared third-party test standard.
+It's an industry-wide labeling gap, not a specific company cutting
+corners.
+</Callout>
+
+<h2 id="the-flooring-tiers">How much Pa you actually need, by flooring type</h2>
+
+Despite the inflation at the high end, there's a genuinely useful rule of
+thumb buried in the numbers — what floor type actually needs how much
+suction:
+
+| Flooring situation | Roughly enough Pa | Notes |
+|---|---|---|
+| Bare hardwood, tile, LVP | 1,500–3,000 Pa | Suction matters less here than brush and edge-cleaning design |
+| Low-pile carpet, light dust | 4,000–6,000 Pa | Comfortable mid-range for most homes |
+| Medium carpet, occasional pet hair | 6,000–8,000 Pa | Where suction starts mattering more than marketing |
+| Thick carpet, heavy pet hair | 10,000 Pa or more | Diminishing returns still apply — brush design matters just as much |
+
+<BarChart
+  title="Minimum recommended suction by flooring type"
+  unit=" Pa"
+  data={[
+    { label: "Hardwood / tile", value: 3000 },
+    { label: "Low-pile carpet", value: 6000 },
+    { label: "Medium carpet + pet hair", value: 8000, highlight: true },
+    { label: "Thick carpet + heavy pet hair", value: 10000 },
+  ]}
+  sourceNote="Commonly cited flooring-tier suction guidance, compiled from manufacturer and independent buying-guide sources; treat as a floor, not a precise threshold."
+/>
+
+Notice that every tier tops out well below the 18,000–35,000Pa figures
+now common in flagship marketing. Once you're past roughly 8,000–10,000Pa
+of genuine, honestly-measured suction, you're almost certainly buying
+headroom you won't use on suction alone — the bigger differentiator at
+the top of the market has shifted to navigation, obstacle avoidance, and
+self-emptying dock reliability.
+
+<h2 id="the-roomba-counterexample">The counterexample that breaks the whole spec sheet</h2>
+
+The clearest evidence that Pa isn't the whole story: iRobot's Roomba Combo
+j9+ **doesn't publish a Pa rating at all**, and continues to earn strong
+marks in independent reviews on the strength of its dual multi-surface
+rubber brush-roll design rather than raw motor pressure. A well-designed
+rubber brush roll extracting embedded dirt consistently can outperform a
+poorly designed bristle brush paired with a much higher Pa figure,
+because the brush does the majority of the physical debris-lifting work —
+the motor's job is to move air fast enough to carry away what the brush
+already dislodged.
+
+<Callout kind="caveat" title="A pressure number can't describe a brush">
+Think of Pa like horsepower on a car spec sheet: a real, meaningful
+number, but one that tells you almost nothing about handling,
+transmission, or tire grip — the factors that actually determine how the
+car performs on a specific road.
+</Callout>
+
+<h2 id="what-independent-testing-checks">What independent testing actually checks</h2>
+
+Because Pa alone is unreliable, the outlets that do publish their own
+testing methodology (rather than relaying manufacturer marketing copy)
+tend to measure a consistent set of real-world outcomes instead. Vacuum
+Wars, one of the more detailed independent testing operations in this
+category, publishes results across categories including:
+
+- **Sand/debris removal percentage** on hard flooring
+- **Embedded pet hair removal percentage** on carpet, benchmarked against
+  a stated category average (their published average sits around 82% for
+  embedded pet hair removal on carpet, against which specific models are
+  compared)
+- **Anti-tangle performance** — the percentage of test runs where hair
+  wrapped around the brush roll
+- **Obstacle avoidance**, scored against a fixed number of test objects
+  (their standard test uses 24 placed objects)
+
+Models that test well tend to score strongly across *several* of these
+categories, not just suction — which is a useful signal in itself: a
+product that only leads on the one self-reported, unstandardized spec
+(Pa) while independent testers don't single it out on pickup performance
+is a pattern worth noticing.
+
+<h2 id="reading-a-listing">How to read a robot vacuum listing</h2>
+
+Given all of this, here's a more useful order of operations than sorting
+listings by Pa:
+
+1. **Match suction tier to your actual flooring**, using the table above —
+   most homes don't need to shop above the 8,000–10,000Pa-equivalent
+   range once you account for real-world losses.
+2. **Check brush roll design and material**, not just suction. Rubber or
+   hybrid rubber/bristle brush rolls generally resist pet-hair tangling
+   better than pure bristle designs.
+3. **Look for independently tested pickup percentages**, not
+   manufacturer-claimed Pa, when comparing two specific models head to
+   head.
+4. **Treat "self-emptying dock" and "mop" features as separate purchase
+   decisions** — they add convenience and cost, but don't affect the
+   vacuum's core suction/brush performance.
+
+<h2 id="bottom-line">Bottom line</h2>
+
+Pa ratings on robot vacuums aren't fake, but they're also not a fair
+basis for comparison shopping — they're self-reported, measured at the
+motor rather than the floor, and only tell part of the mechanical story.
+The more reliable signal is matching a genuinely modest suction tier to
+your actual flooring, then evaluating brush design and independently
+tested pickup rates for the specific models you're choosing between. A
+robot vacuum's spec sheet headline number is, at this point, closer to a
+car's horsepower figure than a guarantee of how clean your floor will
+actually be.

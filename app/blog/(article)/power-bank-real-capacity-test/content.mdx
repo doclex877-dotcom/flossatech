@@ -1,0 +1,239 @@
+import ArticleHeader from "@/components/ArticleHeader";
+import TOC from "@/components/TOC";
+import BarChart from "@/components/BarChart";
+import Callout from "@/components/Callout";
+
+<ArticleHeader
+  title="Power Bank mAh Ratings, Explained: Why You Never Get the Number on the Box"
+  dek="The physics of USB power delivery means advertised capacity and usable capacity are never the same number. Here's the real math, and three real power banks run through it."
+  category="Accessories"
+  date="2026-08-14"
+  readMins={16}
+  verdictScore={79}
+/>
+
+<TOC
+  items={[
+    { id: "the-complaint", text: "The complaint every power bank gets" },
+    { id: "two-voltages", text: "Two voltages, one label" },
+    { id: "worked-example", text: "Worked example: a 20,000mAh bank" },
+    { id: "where-losses-go", text: "Where the rest of the energy goes" },
+    { id: "mah-vs-watts", text: "mAh and watts are answering different questions" },
+    { id: "real-banks-compared", text: "Three real 20,000mAh power banks, compared" },
+    { id: "airline-rules", text: "The one mAh number that's actually regulated" },
+    { id: "read-a-listing", text: "How to read a listing in under a minute" },
+    { id: "cheat-sheet", text: "Quick-reference cheat sheet" },
+    { id: "bottom-line", text: "Bottom line" },
+  ]}
+/>
+
+<h2 id="the-complaint">The complaint every power bank gets</h2>
+
+Look through the reviews on almost any power bank listed as "20,000mAh," and
+within the first page you'll find someone convinced they got scammed. They
+plugged it into their phone, watched the charge percentage climb, and did
+the math: a 20,000mAh power bank should charge their roughly 4,000–4,500mAh
+phone battery about four and a half times over. In practice, they got
+somewhere between two and three charges, and assumed the battery inside was
+fake or degraded.
+
+It isn't. The power bank is doing exactly what its internal cells are rated
+to do. The confusion is baked into the industry's own labeling convention,
+and once you understand it, you can read any power bank listing — Anker,
+Baseus, a no-name brand on a marketplace, doesn't matter — and predict
+roughly what you'll actually get before you buy it.
+
+<Callout kind="note" title="What this article is and isn't">
+This is not a claim that any specific power bank brand is dishonest. The
+mAh number on a power bank box is a real, standard measurement — it's just
+measuring something different from what most buyers assume it's measuring.
+The formula below is basic electrical engineering (P = V × I, and energy
+conservation), not a proprietary test result.
+</Callout>
+
+<h2 id="two-voltages">Two voltages, one label</h2>
+
+The mAh figure printed on a power bank's packaging describes the capacity
+of the **lithium-ion cells inside it**, measured at the cell's native
+voltage — typically **3.6V to 3.7V nominal** for standard Li-ion or
+Li-polymer cells. That's the voltage at which the battery chemistry
+actually stores and releases charge.
+
+But nothing you own charges at 3.7V over USB. USB power delivery operates
+at **5V** as a baseline, stepping up to 9V, 12V, 15V, or 20V for higher-wattage
+fast charging. To get power out of the bank and into your phone, the power
+bank has to run the current through a **boost converter** — a small circuit
+that steps the voltage up from ~3.7V to 5V (or higher).
+
+Stepping voltage up necessarily steps current down for the same amount of
+energy, because power is voltage multiplied by current. And no converter is
+100% efficient — some energy is lost as heat every time it happens. Both of
+those facts mean the mAh figure you see at 5V output is mathematically
+smaller than the mAh figure measured at 3.7V inside the cell, before you
+even account for conversion losses.
+
+<h2 id="worked-example">Worked example: a 20,000mAh bank</h2>
+
+Here's the actual math, using round numbers:
+
+1. **Rated capacity:** 20,000mAh at 3.7V (cell nominal voltage)
+2. **Convert to energy (watt-hours):** 20,000mAh × 3.7V ÷ 1000 = **74Wh**
+3. **Typical boost-conversion efficiency:** power bank literature and
+   third-party teardown testing generally puts USB-C power bank conversion
+   efficiency in the **80–90%** range for modern PD circuitry, lower for
+   older or cheaper designs.
+4. **Usable energy at, say, 85% efficiency:** 74Wh × 0.85 = **62.9Wh**
+5. **Convert back to mAh at 5V output:** 62.9Wh ÷ 5V × 1000 = **~12,580mAh**
+
+So a "20,000mAh" power bank, once you account for the voltage step-up and
+realistic conversion losses, typically delivers somewhere in the
+**12,000–14,000mAh** range measured at 5V — commonly cited industry-wide as
+roughly **60–70% of the printed rating**. That's not a defect. It's the
+same 20,000mAh cells doing the same job at a different voltage.
+
+<BarChart
+  title="20,000mAh rated vs. typical usable capacity at 5V output"
+  unit=" mAh"
+  data={[
+    { label: "Rated (3.7V cell)", value: 20000 },
+    { label: "Usable @ 85% eff.", value: 12580, highlight: true },
+    { label: "Usable @ 75% eff.", value: 11100 },
+  ]}
+  sourceNote="Calculated from P=V×I energy conservation; efficiency range reflects commonly cited USB-C PD boost-converter performance for modern power banks."
+/>
+
+<h2 id="where-losses-go">Where the rest of the energy goes</h2>
+
+If you're doing the subtraction, roughly 30–40% of the printed mAh figure
+"disappears" between the cell and your phone. That gap is made up of a few
+real, physical factors:
+
+- **Voltage step-up loss** — converting 3.7V to 5V (or higher, for fast
+  charging) is the single biggest factor, and it's unavoidable with
+  current battery chemistry.
+- **Heat** — every boost converter wastes some energy as heat; this is why
+  power banks get warm during use, especially at higher wattages.
+- **The bank's own standby draw** — the internal circuitry, any LED
+  display, and Bluetooth or Qi wireless charging coils (if present) draw a
+  small amount of power just to operate.
+- **Cable and connector resistance** — a longer or lower-quality cable
+  loses a small amount of additional energy as heat along its length.
+- **Charge/discharge cycle inefficiency** — some energy is lost every time
+  a lithium-ion cell is charged and then discharged, independent of the
+  USB circuitry.
+
+<Callout kind="verified" title="This is industry-standard, not brand-specific">
+Baseus's own product documentation for its Adaman 65W 20,000mAh power bank
+states plainly that "20,000mAh is the total of the nominal rated capacity
+of internal battery cells" — language that's functionally identical across
+Anker, INIU, and most other major brands' spec sheets. The labeling
+convention is consistent; it's the buyer-facing explanation that's usually
+missing.
+</Callout>
+
+<h2 id="mah-vs-watts">mAh and watts are answering different questions</h2>
+
+The second most common confusion is mixing up **capacity** (mAh) with
+**charging speed** (W, watts). They measure completely different things,
+and a bigger number in one doesn't mean a bigger number in the other:
+
+| Spec | What it actually measures | What it does *not* tell you |
+|---|---|---|
+| **mAh (capacity)** | How much charge the internal cells can store | How fast your device will charge |
+| **W (wattage)** | How fast energy can flow out of a port at a given voltage/current combination | How much total energy the bank holds |
+| **V (voltage)** | The electrical "pressure" at a given port/mode (5V, 9V, 12V, 15V, 20V for USB-PD) | Either of the above on its own |
+
+A 10,000mAh power bank with a 65W USB-C port will charge a laptop faster
+than a 20,000mAh power bank with only an 18W port — but it will run out of
+total energy sooner. Neither bank is "better" in the abstract; they're
+built for different jobs.
+
+<h2 id="real-banks-compared">Three real 20,000mAh power banks, compared</h2>
+
+To make this concrete, here's how the math plays out on three actual,
+currently-listed 20,000mAh power banks, using each manufacturer's own
+published specifications:
+
+| Model | Rated capacity | Max output | Ports | Typical price | Est. usable capacity* |
+|---|---|---|---|---|---|
+| Anker PowerCore Essential 20000 PD | 20,000mAh | 18W (USB-C PD) | 1× USB-C, 1× USB-A | ~$50 | ~12,000–13,000mAh |
+| Anker 20,000mAh Power Bank (built-in USB-C cable) | 20,000mAh | 30W | USB-C (built-in cable) + USB-A | ~$50–70 | ~12,500–13,500mAh |
+| Baseus Adaman 65W 20,000mAh | 20,000mAh | 65W (USB-C PD 3.0) | 1× USB-C, 2× USB-A, 1× Micro-USB in | ~$40–46 | ~12,500–13,500mAh |
+
+<p className="text-sm text-[var(--color-muted)] not-prose -mt-4">
+  *Estimated using the 3.7V cell-to-5V-output conversion described above at
+  a representative 80–88% efficiency band; actual usable capacity varies by
+  unit, ambient temperature, and which port/protocol is used.
+</p>
+
+Notice that **all three list the same 20,000mAh capacity**, but the
+higher-wattage models (30W and 65W) will hit that usable-capacity ceiling
+faster on compatible devices, and the 65W Baseus model can additionally
+top up a laptop — something the 18W Anker unit can't do at a meaningful
+speed. If your priority is charging a phone twice while barely noticing the
+weight in your bag, the wattage difference matters less. If you want one
+bank that can also rescue a dying laptop, it matters a lot.
+
+<h2 id="airline-rules">The one mAh number that's actually regulated</h2>
+
+There's a mAh threshold that isn't marketing at all — it's aviation
+regulation. The FAA and equivalent international bodies restrict lithium-ion
+batteries in carry-on luggage based on **watt-hours (Wh)**, not mAh
+directly, which is why power bank listings for larger-capacity units often
+convert the number for you:
+
+- **Under 100Wh:** generally allowed in carry-on without airline approval
+- **100–160Wh:** allowed only with prior airline approval, and typically
+  limited to two spare batteries per passenger
+- **Over 160Wh:** prohibited on most passenger aircraft entirely
+
+Using the same 3.7V conversion from earlier, a 20,000mAh power bank sits at
+about 74Wh — comfortably under the 100Wh line. This is also exactly why you
+rarely see power banks marketed much above the 25,000–27,000mAh range from
+mainstream brands: past roughly 27,000mAh at 3.7V, a bank starts
+approaching the 100Wh threshold and becomes a harder sell for
+travel-focused buyers.
+
+<h2 id="read-a-listing">How to read a listing in under a minute</h2>
+
+Next time you're comparing power banks, skip past the giant mAh number
+first and check these three things instead:
+
+1. **What's the max output wattage, and on which port?** A 65W-capable
+   bank is only fast if you're using the port and cable that supports 65W —
+   secondary ports are almost always lower-wattage.
+2. **What charging standards does it support?** USB-PD (Power Delivery) is
+   the modern cross-brand standard; Qualcomm Quick Charge (QC) is common on
+   older or budget Android-focused devices. A bank that only lists one may
+   charge your specific device more slowly than the wattage number implies.
+3. **Does the wattage match what your device can actually accept?** A
+   65W-capable power bank charging a phone that maxes out at 20W will
+   charge at 20W, full stop — the extra wattage only matters if you also
+   own something (a laptop, a tablet) that can use it.
+
+<h2 id="cheat-sheet">Quick-reference cheat sheet</h2>
+
+| If the box says... | You'll typically get (at 5V, real-world use) |
+|---|---|
+| 10,000mAh | ~6,000–7,000mAh usable |
+| 20,000mAh | ~12,000–14,000mAh usable |
+| 26,800mAh (a common "just under 100Wh" size) | ~16,000–18,500mAh usable |
+
+<Callout kind="caveat" title="Efficiency varies by unit and conditions">
+The 60–70% "usable" range is a reasonable rule of thumb, not a guarantee
+for any single unit. Cold temperatures, an aging battery, a
+lower-wattage-than-optimal cable, or simultaneous multi-device charging can
+all push realized capacity toward the lower end of that range.
+</Callout>
+
+<h2 id="bottom-line">Bottom line</h2>
+
+A power bank that "only" delivers 12,000–14,000mAh from a 20,000mAh rating
+isn't broken and isn't lying to you in any way that violates industry
+convention — it's reporting cell capacity at cell voltage, the same way
+every major brand does. The number worth comparing across products isn't
+the mAh on the box in isolation; it's mAh combined with max wattage, port
+type, and price, because those three together tell you how the bank will
+actually behave in your bag. Once you know the conversion math, you can
+mentally discount any power bank's advertised capacity by roughly a third
+and get a realistic expectation before you ever click "buy."

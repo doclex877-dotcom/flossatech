@@ -1,0 +1,101 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Color system — "test bench" palette */
+  --color-ink: #14181a;
+  --color-bench: #1c2420;
+  --color-bench-2: #232d27;
+  --color-paper: #eeece4;
+  --color-paper-2: #e3e0d5;
+  --color-signal: #ff5a1f;
+  --color-signal-dim: #d84c18;
+  --color-verify: #2fa89a;
+  --color-verify-dim: #24847a;
+  --color-muted: #5b645f;
+  --color-line: #cdc9bb;
+  --color-line-dark: #3a4540;
+
+  --font-display: "Big Shoulders", "Arial Narrow", sans-serif;
+  --font-body: "Newsreader", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--color-signal);
+  color: var(--color-paper);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-signal);
+  outline-offset: 2px;
+}
+
+.article-prose {
+  --tw-prose-body: var(--color-ink);
+  --tw-prose-headings: var(--color-ink);
+  --tw-prose-links: var(--color-signal-dim);
+  --tw-prose-bold: var(--color-ink);
+  --tw-prose-quotes: var(--color-ink);
+  --tw-prose-quote-borders: var(--color-signal);
+  --tw-prose-th-borders: var(--color-ink);
+  --tw-prose-td-borders: var(--color-line);
+  max-width: 72ch;
+  font-size: 1.125rem;
+}
+
+.article-prose h2 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  border-bottom: 2px solid var(--color-ink);
+  padding-bottom: 0.3em;
+  margin-top: 2.4em;
+}
+
+.article-prose h3 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  color: var(--color-signal-dim);
+}
+
+.article-prose table {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  border: 2px solid var(--color-ink);
+}
+
+.article-prose thead {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.article-prose th {
+  color: var(--color-paper) !important;
+}
+
+.article-prose blockquote {
+  font-family: var(--font-body);
+  font-style: italic;
+  background: var(--color-paper-2);
+  padding: 0.8em 1.2em;
+}

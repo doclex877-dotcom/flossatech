@@ -1,0 +1,167 @@
+import ArticleHeader from "@/components/ArticleHeader";
+import TOC from "@/components/TOC";
+import BarChart from "@/components/BarChart";
+import Callout from "@/components/Callout";
+
+<ArticleHeader
+  title="True Wireless Earbuds: How Battery-Life Numbers on the Box Are Measured (and Where They Mislead)"
+  dek="Every brand tests battery life differently. A look at the standards, the fine print, and how to compare across brands fairly."
+  category="Audio"
+  date="2026-08-21"
+  readMins={18}
+  verdictScore={77}
+/>
+
+<TOC
+  items={[
+    { id: "the-gap", text: "The gap you'll actually notice" },
+    { id: "how-brands-test", text: "How brands measure the number on the box" },
+    { id: "how-independent-labs-differ", text: "How independent testing labs do it differently" },
+    { id: "anc-tax", text: "The ANC tax" },
+    { id: "case-math", text: "The case-total number is doing a lot of work" },
+    { id: "degradation", text: "The number also isn't fixed over time" },
+    { id: "comparison-table", text: "Manufacturer claim vs. independent test: what changes" },
+    { id: "how-to-compare-fairly", text: "How to compare two listings fairly" },
+    { id: "bottom-line", text: "Bottom line" },
+  ]}
+/>
+
+<h2 id="the-gap">The gap you'll actually notice</h2>
+
+You charge your earbuds fully before leaving the house, listen at a
+normal commuting volume, and the low-battery alert hits an hour or two
+before the box's claimed number. That's not a defect, and it isn't
+usually the brand lying — it's the predictable result of two different
+parties measuring "battery life" under two very different conditions.
+
+<h2 id="how-brands-test">How brands measure the number on the box</h2>
+
+Manufacturer-published battery figures are typically measured under
+close-to-ideal conditions: a fixed, moderate volume — commonly cited
+around **50% volume** — in a quiet environment, often with active noise
+cancellation (ANC) **off** or on a lower setting, using a simple test
+track rather than bass-heavy music that draws more power from the driver
+amplifier.
+
+None of that is disclosed as clearly as the headline number itself. A
+box that says "8 hours" is almost always describing "8 hours, under the
+specific volume/ANC/codec conditions in our internal test protocol" — a
+protocol that varies from brand to brand, because there's no single
+mandatory industry standard earbuds must be tested against before making
+a battery claim.
+
+<h2 id="how-independent-labs-differ">How independent testing labs do it differently</h2>
+
+The review outlets that publish their own methodology generally test
+under conditions closer to real use, which is exactly why their numbers
+often come in lower than the box:
+
+- **SoundGuys** tests battery life with real music peaking at a fixed,
+  level-matched loudness (75dB SPL) with ANC enabled — deliberately not
+  the low-volume condition manufacturers use for their rated figures.
+  Across their testing, wireless earbuds have averaged around **6.4
+  hours** per charge at that standardized, level-matched loudness,
+  compared with roughly 35 hours for full-size headphones tested the same
+  way.
+- **Tom's Guide** tests by listening continuously with ANC on at "a
+  comfortable volume" and timing exactly how long playback lasts before
+  the earbuds need to return to the case, rather than relying on the
+  spec sheet.
+- **RTINGS** measures battery life alongside charge time and
+  battery-saving features like auto-off timers, as part of a broader
+  active-features test suite applied consistently across every model they
+  review.
+
+<Callout kind="verified" title="The pattern, not any one number">
+The exact hour figures above are specific to each outlet's own test
+volume and methodology and shouldn't be read as a universal constant —
+the useful takeaway is the consistent *pattern*: independent, level-matched
+testing conditions produce lower numbers than manufacturer specs, because
+manufacturer specs are measured at a lower, more favorable volume.
+</Callout>
+
+<h2 id="anc-tax">The ANC tax</h2>
+
+Active noise cancellation runs a continuous processing load — microphones
+sampling ambient sound, a processor generating an inverse waveform in
+real time — on top of whatever the driver itself draws to produce audio.
+That processing overhead measurably shortens battery life, and it's why
+the same physical earbuds will report meaningfully different runtimes
+depending on whether ANC was on or off during testing.
+
+This creates a specific, common mismatch: a manufacturer's headline
+number is sometimes measured with ANC off (which most buyers won't
+actually be doing, since ANC is a primary reason to buy noise-cancelling
+earbuds in the first place), while the independent lab testing that
+number against tests with ANC on, at a higher volume — compounding two
+separate sources of lower real-world runtime into one number that looks
+like a broken promise but is really two different test conditions.
+
+<h2 id="case-math">The case-total number is doing a lot of work</h2>
+
+Modern listings usually lead with a combined "total with case" figure —
+50 total hours is common on mid-to-premium 2026 earbuds, with some
+listings pushing past 60. That number is mathematically the sum of
+several individual charge cycles (typically 4–8 hours per earbud charge,
+multiplied by however many full case recharges the case's own battery
+can provide), not one continuous 50-hour session. It's a real, useful
+number for judging how long you can go on a trip without a wall outlet —
+but it tells you nothing about how long a single charge lasts before you
+need the case at all, which is the number that actually matters for a
+single commute, flight, or workday.
+
+<BarChart
+  title="What one advertised 'battery life' claim is actually built from"
+  unit=" hrs"
+  data={[
+    { label: "Single charge (earbuds only)", value: 6 },
+    { label: "Total incl. case recharges", value: 50, highlight: true },
+  ]}
+  sourceNote="Illustrative breakdown based on commonly advertised 2026 mid-to-premium earbud specifications; individual models vary."
+/>
+
+<h2 id="degradation">The number also isn't fixed over time</h2>
+
+Like any lithium-ion or lithium-polymer battery, an earbud's usable
+capacity declines with charge cycles. Independent longitudinal testing
+that re-checks the same units at 6 and 12 months has found measurable,
+consistent drops in real-world runtime well before a year of normal use
+— which is a separate factor from the volume/ANC testing-condition gap
+discussed above, and one that applies to literally every earbud on the
+market regardless of brand or claimed spec.
+
+<h2 id="comparison-table">Manufacturer claim vs. independent test: what changes</h2>
+
+| Test condition | Typical manufacturer spec | Typical independent test |
+|---|---|---|
+| Volume | ~50%, fixed | Level-matched to a real-world loudness target, often higher |
+| ANC | Often off, or lowest setting | Usually on, since that's how most buyers use it |
+| Audio content | Simple test tone/track | Real music, sometimes bass-heavy |
+| Environment | Quiet lab | Same, but measured against a louder target output |
+
+<h2 id="how-to-compare-fairly">How to compare two listings fairly</h2>
+
+1. **Don't compare two brands' headline numbers directly** — they're
+   measured under different, undisclosed conditions, so an "8-hour" pair
+   and a "7-hour" pair from different brands may perform identically in
+   your actual use.
+2. **Look for a stated test volume or ANC condition** in the spec sheet's
+   fine print; its presence (or absence) tells you how much to trust the
+   headline figure.
+3. **Weight single-charge runtime over total-with-case runtime** if your
+   use case is built around discrete sessions (a commute, a workout, a
+   flight) rather than multi-day travel without charging access.
+4. **Treat independent, methodology-disclosed reviews as the tiebreaker**
+   between two models with similar specs — a lab that tells you its
+   volume and ANC settings is giving you a number you can actually
+   compare against a different pair tested the same way.
+
+<h2 id="bottom-line">Bottom line</h2>
+
+An earbud's battery-life claim isn't dishonest so much as it's answering
+a question you didn't get to see asked: "how long does this last at
+roughly 50% volume, with ANC off, in a quiet room?" That's rarely how
+anyone actually uses wireless earbuds, which is exactly why real-world
+runtime — especially with ANC on, at a normal commuting volume — tends to
+land noticeably below the number on the box, consistently, across every
+major brand.
