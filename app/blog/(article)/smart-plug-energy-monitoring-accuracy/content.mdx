@@ -1,0 +1,145 @@
+import ArticleHeader from "@/components/ArticleHeader";
+import TOC from "@/components/TOC";
+import BarChart from "@/components/BarChart";
+import Callout from "@/components/Callout";
+
+<ArticleHeader
+  title="Smart Plugs and Energy Monitoring: How the Math Behind the App Actually Works"
+  dek="A peer-reviewed test of five popular smart plug brands found energy-measurement errors ranging from under 2% to over 100%, depending on the load."
+  category="Smart Home"
+  date="2026-09-29"
+  readMins={15}
+  verdictScore={87}
+/>
+
+<TOC
+  items={[
+    { id: "how-it-measures", text: "How a smart plug actually measures power" },
+    { id: "the-peer-reviewed-test", text: "What a peer-reviewed accuracy test found" },
+    { id: "why-variable-loads-break-it", text: "Why variable loads specifically break the measurement" },
+    { id: "the-hardware-tiers", text: "The hardware tiers that predict accuracy" },
+    { id: "calibration-drift", text: "Calibration drift: accuracy that degrades after purchase" },
+    { id: "what-this-means-practically", text: "What this actually means for your electric bill decisions" },
+    { id: "bottom-line", text: "Bottom line" },
+  ]}
+/>
+
+<h2 id="how-it-measures">How a smart plug actually measures power</h2>
+
+Most consumer smart plugs measure current using a **shunt resistor** — a
+precision resistor placed in series with the load. By Ohm's Law, the
+voltage drop across that resistor is directly proportional to the
+current flowing through it, so measuring that small voltage (typically
+amplified by a current-sense chip) lets the plug calculate current, and
+combined with a voltage reading, calculate power. It's a real,
+legitimate electrical engineering technique used throughout industrial
+and consumer electronics — the accuracy problem isn't the underlying
+method, it's how precisely each specific product implements and
+calibrates it.
+
+<h2 id="the-peer-reviewed-test">What a peer-reviewed accuracy test found</h2>
+
+A published study (ScienceDirect) tested five commercially available
+energy-monitoring smart plug brands — Belkin, TP-Link, Etekcity,
+Emporia, and Sonoff — against a high-accuracy laboratory reference
+instrument across a range of load types and variability. The spread in
+results was dramatic:
+
+- **Belkin WEMO** had the smallest measured error of any brand tested,
+  **never exceeding 1.7%**.
+- **The other four brands tested (TP-Link, Etekcity, Emporia, Sonoff)**
+  showed maximum energy measurement errors of **54% to 100%** —
+  specifically for loads with variable power draw.
+- All tested units also showed **reporting delays of 3–6 seconds**, with
+  some delays reaching as high as **20 seconds**.
+
+<BarChart
+  title="Maximum measured energy error, five smart plug brands (peer-reviewed test)"
+  unit="%"
+  data={[
+    { label: "Belkin WEMO", value: 1.7, highlight: true },
+    { label: "TP-Link / Etekcity / Emporia / Sonoff (range)", value: 100 },
+  ]}
+  sourceNote="ScienceDirect peer-reviewed comparison of five commercial smart plug brands against a laboratory-grade reference instrument; the 54-100% figure represents the range of maximum errors across the four higher-error brands tested, specifically on variable electronic loads."
+/>
+
+<Callout kind="verified" title="This isn't every unit of every brand, every time">
+A single published study testing specific units of five brands isn't a
+permanent verdict on every product line from those manufacturers
+forever — firmware updates and hardware revisions can change results.
+The finding worth taking away isn't "avoid these specific brands," it's
+that **massive accuracy variance between smart plug models is real,
+documented, and load-dependent** — not a hypothetical concern.
+</Callout>
+
+<h2 id="why-variable-loads-break-it">Why variable loads specifically break the measurement</h2>
+
+The study found errors were **highly dependent on load variability**,
+with meaningful errors appearing even at variation rates as low as
+0.01–0.05 Hz (a load cycling roughly once every 20 to 100 seconds) — a
+pattern common in real household electronics like laptops, TVs, and
+game consoles that draw power in bursts rather than at one constant
+level. A steady, constant load (a space heater, an incandescent bulb) is
+the easy case for this kind of sensor; a laptop cycling between idle and
+active processing, or a TV alternating between bright and dark scenes,
+is a genuinely harder measurement problem — and it's exactly the kind of
+device people most want to energy-monitor.
+
+<h2 id="the-hardware-tiers">The hardware tiers that predict accuracy</h2>
+
+Beyond brand-specific results, the underlying hardware tier a plug uses
+predicts its likely accuracy range:
+
+| Tier | Typical price | Hardware approach | Typical accuracy on stable loads |
+|---|---|---|---|
+| Entry-level | $15–25 | Basic current-sensing IC, estimated power factor | ±8–12% |
+| Mid-tier | $30–60 | True-RMS current sensing, factory-calibrated voltage reference | ±3–5% |
+| Commercial-grade | $80+ | Dual-shunt sensing, phase-aware monitoring | ±1.5% |
+
+These figures describe **stable-load** performance specifically — per
+the peer-reviewed test above, even well-specified units can show
+dramatically larger errors once the load itself becomes variable, which
+isn't fully captured by a single "accuracy" percentage on a spec sheet.
+
+<h2 id="calibration-drift">Calibration drift: accuracy that degrades after purchase</h2>
+
+A shunt-based current sensor's accuracy depends on a one-time factory
+calibration that ties the specific shunt resistor and its readout
+electronics together into a stored correction factor. That calibration
+can drift over the product's life due to temperature swings,
+manufacturing tolerances between individual units (even from the same
+production batch), and firmware updates that change the underlying
+measurement algorithm — meaning a plug's accuracy isn't necessarily
+fixed at the number it shipped with.
+
+<h2 id="what-this-means-practically">What this actually means for your electric bill decisions</h2>
+
+1. **Treat smart plug energy data as directionally useful, not
+   bill-accurate** — good for spotting which devices draw the most
+   relative power, less reliable for precise dollar-and-cents
+   projections.
+2. **Be specifically skeptical of "idle power" readings** used to
+   justify auto-shutoff automations — standby draw is a small, steady
+   signal that's more vulnerable to sensor noise and calibration offset
+   than large, active loads.
+3. **Expect the largest errors on variable-draw electronics** (laptops,
+   TVs, game consoles) rather than steady loads (heaters, simple
+   appliances) — the same plug can be meaningfully more accurate on one
+   device type than another.
+4. **A significantly cheaper or more expensive plug doesn't guarantee
+   proportionally different real-world accuracy** — the peer-reviewed
+   test found one budget-tier brand (Belkin WEMO) outperforming several
+   competitors by a wide margin, so price tier alone isn't a reliable
+   predictor.
+
+<h2 id="bottom-line">Bottom line</h2>
+
+Smart plug energy monitoring uses a legitimate, well-understood
+measurement technique, but real, independently tested accuracy varies
+enormously between brands and — more importantly — between load types
+on the very same device. A number showing "$1.27 saved this week" in an
+app dashboard reflects a specific hardware and firmware implementation's
+best estimate, not a utility-grade measurement, and the peer-reviewed
+gap between the best- and worst-performing tested brands (under 2% vs.
+over 50-100% error on variable loads) is large enough that it shouldn't
+be treated as background-level uncertainty.

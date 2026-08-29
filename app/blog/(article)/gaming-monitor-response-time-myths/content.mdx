@@ -1,0 +1,165 @@
+import ArticleHeader from "@/components/ArticleHeader";
+import TOC from "@/components/TOC";
+import BarChart from "@/components/BarChart";
+import Callout from "@/components/Callout";
+
+<ArticleHeader
+  title="Gaming Monitor Response Times: What the Number on the Box Actually Means"
+  dek="A '1ms' monitor can still show visible ghosting. GtG and MPRT measure two different things, and manufacturers pick whichever number looks best."
+  category="Displays"
+  date="2026-09-20"
+  readMins={19}
+  verdictScore={81}
+/>
+
+<TOC
+  items={[
+    { id: "two-different-specs", text: "GtG and MPRT are answering two different questions" },
+    { id: "what-gtg-measures", text: "What GtG actually measures" },
+    { id: "what-mprt-measures", text: "What MPRT actually measures — and why it's usually a strobing trick" },
+    { id: "the-inflation-problem", text: "How far marketed numbers drift from measured reality" },
+    { id: "overdrive-and-overshoot", text: "Overdrive: the setting that can fix or cause ghosting" },
+    { id: "panel-type-baseline", text: "What panel type predicts before any spec games happen" },
+    { id: "reading-a-listing", text: "How to read a response-time spec" },
+    { id: "bottom-line", text: "Bottom line" },
+  ]}
+/>
+
+<h2 id="two-different-specs">GtG and MPRT are answering two different questions</h2>
+
+Two different specs get marketed under the umbrella of "response time,"
+and they measure genuinely different things:
+
+- **GtG (Gray-to-Gray):** how long it takes a pixel to physically
+  transition from one gray shade to another.
+- **MPRT (Moving Picture Response Time):** how long a moving image
+  remains visible to your eyes — a measure of perceived motion
+  persistence, not pixel transition speed.
+
+A monitor can advertise an excellent number on one metric while
+performing poorly on the other, and manufacturers are free to lead with
+whichever number looks best on the box.
+
+<h2 id="what-gtg-measures">What GtG actually measures</h2>
+
+At the physical level, GtG is governed by how quickly liquid crystals in
+an LCD panel reorient when voltage is applied. Different panel
+technologies have meaningfully different natural GtG behavior:
+
+| Panel type | Typical GtG range |
+|---|---|
+| OLED | As fast as ~0.03ms |
+| Fast IPS / Nano IPS / Rapid IPS | Often close to 1ms |
+| TN | Historically fast, ~1–2ms |
+| VA | Can advertise similar figures but frequently shows slower dark-level transitions ("black smearing") |
+
+The catch with any single quoted GtG figure: manufacturers can report
+the fastest transition achieved, the best-case overdrive mode, or a
+narrow measurement window — none of which is dishonest exactly, but none
+of which necessarily describes typical, real gameplay motion either.
+
+<h2 id="what-mprt-measures">What MPRT actually measures — and why it's usually a strobing trick</h2>
+
+Even a monitor with genuinely fast pixel transitions can still look
+blurry in motion, because most of what we perceive as motion blur on a
+standard "sample-and-hold" display comes from **persistence** — how long
+each frame stays lit on screen while your eyes keep tracking a moving
+object across it — not from pixel switching speed. At 144Hz, that hold
+time is roughly **6.9 milliseconds**, producing an estimated **7 pixels
+of perceived blur per 1,000 pixels/second of on-screen motion**,
+regardless of how fast the panel's pixels can switch.
+
+The way monitors chase a low MPRT number is almost always **backlight
+strobing** — briefly flashing the backlight rather than keeping it
+continuously lit — sold under brand names like **ULMB** (NVIDIA), **DyAc**
+(BenQ/Zowie), and **ELMB** (ASUS). This genuinely reduces perceived
+blur, but comes with real trade-offs: strobing modes typically **reduce
+overall brightness by 50% or more** and generally **cannot be used
+simultaneously with variable refresh rate technology** (G-Sync/FreeSync).
+
+<Callout kind="caveat" title="A '1ms MPRT' badge says almost nothing about pixel speed">
+A monitor can be marketed at "1ms MPRT" while its actual GtG response
+time measures considerably slower — the two numbers are not
+interchangeable, and a low MPRT figure achieved through strobing doesn't
+mean the underlying panel switches pixels quickly.
+</Callout>
+
+<h2 id="the-inflation-problem">How far marketed numbers drift from measured reality</h2>
+
+Independent measurement has documented meaningful gaps between marketed
+response-time figures and tested results across panel types:
+
+<BarChart
+  title="Marketed vs. independently measured GtG (illustrative examples by panel class)"
+  unit=" ms"
+  data={[
+    { label: "TN panel — marketed 1ms", value: 1.2 },
+    { label: "Fast IPS — marketed 1ms", value: 3.8, highlight: true },
+    { label: "Standard IPS — marketed 4ms", value: 8 },
+    { label: "VA — marketed \"1ms MPRT\"", value: 12 },
+  ]}
+  sourceNote="Illustrative marketed-vs-measured comparison compiled from independent panel response-time testing methodology and commonly cited inflation patterns by panel class, 2026."
+/>
+
+The general pattern: TN panels tend to deliver closest to their marketed
+GtG figure; fast IPS panels commonly measure several times slower than
+their headline number while still performing acceptably at high refresh
+rates; and VA panels marketed with an MPRT figure rather than a GtG
+figure are the most likely to hide a much slower actual pixel-transition
+speed behind a technically-true-but-different metric.
+
+<h2 id="overdrive-and-overshoot">Overdrive: the setting that can fix or cause ghosting</h2>
+
+**Overdrive** is the panel controller's method of forcing pixels through
+transitions faster than they'd naturally settle, by briefly applying
+extra voltage. Done well, it meaningfully cuts real GtG time with no
+visible cost. Pushed too aggressively (commonly labeled "Extreme" or the
+highest numbered setting), the pixel **overshoots** past its target
+shade before settling back — producing **inverse ghosting**: a bright
+halo or pale outline trailing moving objects, which is perceptually just
+as distracting as the dark smearing overdrive was meant to fix.
+
+The practical recommendation that shows up consistently across
+independent testing: **the second-highest overdrive setting**, not the
+maximum one, is usually the actual sweet spot — worth testing with a
+moving test pattern rather than assuming "Extreme" is automatically
+best.
+
+<h2 id="panel-type-baseline">What panel type predicts before any spec games happen</h2>
+
+Independent of any specific marketed number, panel type sets a
+reasonable baseline expectation: OLED's per-pixel switching is
+dramatically faster than any LCD variant by an order of magnitude; among
+LCD types, modern fast-IPS variants have closed most of the gap with TN
+panels while offering better color and viewing angles; VA panels remain
+the most likely to show visible dark-level smearing regardless of the
+marketed spec, due to how VA's liquid crystal layer behaves specifically
+at transitions into darker shades.
+
+<h2 id="reading-a-listing">How to read a response-time spec</h2>
+
+1. **Check whether the number is labeled GtG or MPRT** — they are not
+   interchangeable, and a monitor can advertise an excellent figure on
+   one while performing unremarkably on the other.
+2. **Treat a bare "1ms" claim with extra scrutiny on VA panels
+   specifically** — it's more likely to be an MPRT figure achieved
+   through strobing than a genuine GtG measurement.
+3. **Look for independent measured results**, not just the marketed
+   number, when comparing two specific models — outlets that publish
+   pursuit-camera photos or measured overshoot per overdrive setting are
+   testing the actual behavior, not relaying the spec sheet.
+4. **Start overdrive at the second-highest setting**, not the maximum,
+   and check for inverse ghosting with a moving test pattern before
+   settling on Extreme/Level 5.
+
+<h2 id="bottom-line">Bottom line</h2>
+
+A gaming monitor's "1ms" badge is one of the most manufacturer-flexible
+numbers in consumer electronics — not because it's fabricated, but
+because there are at least two legitimately different things it could be
+measuring (GtG vs. MPRT), multiple overdrive settings to choose the
+best-case number from, and a panel-type baseline that predicts real
+behavior better than either marketed figure alone. Response time is
+real and worth caring about, but it's genuinely one of the few specs in
+gaming hardware where the number on the box requires more context to
+interpret than almost anything else on the listing.

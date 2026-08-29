@@ -1,0 +1,140 @@
+import ArticleHeader from "@/components/ArticleHeader";
+import TOC from "@/components/TOC";
+import Callout from "@/components/Callout";
+
+<ArticleHeader
+  title="Action Camera Stabilization: Optical vs. Digital, and Why the Spec Sheet Hides the Difference"
+  dek="Almost every action camera uses electronic stabilization, not optical — and that choice comes with a field-of-view trade-off most listings don't mention."
+  category="Cameras"
+  date="2026-09-17"
+  readMins={18}
+  verdictScore={84}
+/>
+
+<TOC
+  items={[
+    { id: "two-approaches", text: "Two fundamentally different approaches" },
+    { id: "the-crop-tradeoff", text: "The trade-off EIS makes that OIS doesn't" },
+    { id: "the-named-systems", text: "What HyperSmooth and RockSteady actually are" },
+    { id: "horizon-lock", text: "Horizon lock: a genuinely useful, separate feature" },
+    { id: "real-world-testing", text: "What real, disclosed field testing found" },
+    { id: "the-market-shift", text: "A market that flipped fast" },
+    { id: "reading-a-spec-sheet", text: "How to read an action camera's stabilization claims" },
+    { id: "bottom-line", text: "Bottom line" },
+  ]}
+/>
+
+<h2 id="two-approaches">Two fundamentally different approaches</h2>
+
+Camera stabilization comes in two genuinely different forms, and the
+distinction matters more than most spec sheets make clear:
+
+- **Optical Image Stabilization (OIS)** physically moves lens elements
+  or the image sensor itself to counteract shake in real time — a
+  mechanical, in-hardware correction.
+- **Electronic Image Stabilization (EIS)** uses software, analyzing
+  gyroscope and motion sensor data to digitally shift and crop the
+  video frame so the output looks stable.
+
+OIS is generally considered more effective at the physics level, but
+it's rarely found in action cameras specifically because of size
+constraints — the moving mechanical components OIS requires are harder
+to fit into a small, ruggedized, waterproof action-camera body than into
+a phone or mirrorless camera. As a result, **almost every action
+camera on the market relies primarily on EIS**, not OIS.
+
+<h2 id="the-crop-tradeoff">The trade-off EIS makes that OIS doesn't</h2>
+
+EIS's correction process — digitally shifting the frame to compensate
+for detected motion — requires cropping into the sensor's full field of
+view to have room to shift the image around. That means a camera running
+aggressive EIS is capturing a **narrower field of view** than its
+sensor's native capability, a real and consistent trade-off that doesn't
+always show up clearly on a spec sheet listing the sensor's raw
+resolution and field-of-view numbers.
+
+<Callout kind="verified" title="Not a flaw — a mechanism">
+This isn't a defect specific to any one brand's software; it's how
+frame-shifting stabilization works by definition. The best EIS systems
+manage this trade-off well, cropping only as much as needed for the
+detected motion rather than a fixed amount regardless of how shaky the
+footage actually is.
+</Callout>
+
+<h2 id="the-named-systems">What HyperSmooth and RockSteady actually are</h2>
+
+The marketing names attached to stabilization — GoPro's **HyperSmooth**
+and DJI's **RockSteady** — describe proprietary EIS algorithms, not a
+different underlying technology category. Both use IMU (inertial
+measurement unit) sensor data and predictive motion algorithms to decide
+how to shift and crop each frame; the difference between them is in how
+well-tuned each company's specific algorithm is for different types of
+motion. GoPro's HyperSmooth has won industry recognition (an Emmy Award
+for its stabilization algorithms) and multiple independent field tests
+have found it holds a genuine edge specifically in extreme, high-motion
+conditions like mountain biking on rough terrain — while for moderate
+activity (hiking, kayaking, everyday use), independent testing has
+increasingly found DJI's RockSteady comparably smooth, a gap that used
+to favor GoPro much more heavily.
+
+<h2 id="horizon-lock">Horizon lock: a genuinely useful, separate feature</h2>
+
+**Horizon lock** (GoPro's implementation) and **HorizonSteady** (DJI's)
+are a related but distinct feature from general shake stabilization:
+they keep the horizon line level even as the camera itself physically
+rotates — useful specifically for activities like surfing, skiing, or
+mountain biking where the camera mount rotates with the rider's body.
+This typically works only up to a stated resolution/frame-rate ceiling
+(commonly disabled at the highest frame rates like 120fps), which is
+worth checking against your specific shooting mode before assuming it'll
+be active.
+
+<h2 id="real-world-testing">What real, disclosed field testing found</h2>
+
+One field test that mounted both a GoPro and a DJI action camera on
+snowmobile handlebars for a two-hour rough-terrain ride with jumps and
+high speeds reported the two systems producing **equally smooth
+footage**, describing the stabilization difference as negligible enough
+that choosing between the cameras on stabilization alone wasn't a useful
+basis for a purchase decision — the tester recommended weighing sensor
+size, battery life, and waterproofing instead for that specific
+comparison.
+
+<h2 id="the-market-shift">A market that flipped fast</h2>
+
+Worth knowing as context: GoPro's action-camera market share fell from
+roughly **84%** three years prior to **under 19%** as of 2026, as DJI
+and other competitors (Insta360 among them) released competitively
+priced, comparably capable alternatives — DJI reportedly overtook GoPro
+in global action-camera sales for the first time in 2026. That shift
+matters for buyers because it means the "safe default" pick in this
+category has genuinely changed in a short window, and pricing/value
+comparisons that were true two or three years ago may no longer hold.
+
+<h2 id="reading-a-spec-sheet">How to read an action camera's stabilization claims</h2>
+
+1. **Assume EIS, not OIS**, unless the spec sheet explicitly states
+   optical stabilization — it's the exception in this category, not the
+   rule.
+2. **Check the field-of-view impact at your intended resolution/frame
+   rate**, since aggressive EIS crops the frame and that crop amount can
+   vary by mode.
+3. **Check horizon lock's frame-rate ceiling** specifically if you shoot
+   high-frame-rate slow motion — it's commonly unavailable at a camera's
+   highest frame rate.
+4. **Weight stabilization less heavily than reviews from three-plus
+   years ago suggested** — multiple recent, disclosed-methodology field
+   tests have found the gap between leading brands has narrowed
+   significantly for all but the most extreme, high-motion use cases.
+
+<h2 id="bottom-line">Bottom line</h2>
+
+Nearly every action camera stabilizes footage electronically, not
+optically, and that choice comes with a real field-of-view trade-off
+baked into the physics of how EIS works — a fact worth knowing even
+though it rarely changes a buying decision on its own. The genuinely
+useful piece of current information is that the stabilization gap
+between the two major brands has narrowed enough, per multiple
+independent field tests, that it's no longer the deciding factor it
+once was — battery life, waterproofing, and price now do more of that
+work.

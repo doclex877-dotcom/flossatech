@@ -1,0 +1,146 @@
+import ArticleHeader from "@/components/ArticleHeader";
+import TOC from "@/components/TOC";
+import Callout from "@/components/Callout";
+
+<ArticleHeader
+  title="E-Readers Compared: Screen Tech, Storage, and Ecosystem Lock-In"
+  dek="E-ink battery life is measured in weeks, not hours — but the bigger long-term decision is which file formats and bookstores you're locking yourself into."
+  category="Gadgets"
+  date="2026-09-11"
+  readMins={17}
+  verdictScore={83}
+/>
+
+<TOC
+  items={[
+    { id: "why-weeks-not-hours", text: "Why e-readers last weeks, not hours" },
+    { id: "color-eink-tradeoff", text: "The color E Ink trade-off nobody puts on the box clearly" },
+    { id: "ecosystem-lock-in", text: "The real long-term decision: file format lock-in" },
+    { id: "waterproofing", text: "Waterproofing isn't universal, even within one brand's lineup" },
+    { id: "spec-table", text: "Spec-for-spec: entry-level to premium" },
+    { id: "how-to-choose", text: "How to actually choose" },
+    { id: "bottom-line", text: "Bottom line" },
+  ]}
+/>
+
+<h2 id="why-weeks-not-hours">Why e-readers last weeks, not hours</h2>
+
+An E Ink display's battery advantage over an LCD or OLED tablet screen
+comes from a genuine, fundamental difference in how the two technologies
+work: E Ink only draws power **when the page changes**, physically
+rearranging charged pigment particles to form the new page, then holding
+that image with **no ongoing power draw** until the next page turn. An
+LCD or OLED screen, by contrast, has to continuously refresh and
+backlight or self-illuminate every pixel for as long as it's displaying
+anything at all.
+
+That's the entire reason entry-level Kindles and Kobos are commonly
+rated for **weeks** of battery life (Kindle Paperwhite and Kindle Scribe
+are both rated up to 12 weeks under typical use), while a similarly
+priced tablet running the same ebook app lasts roughly **10 hours** on a
+charge. It's not a battery-capacity difference — it's a fundamentally
+different display technology.
+
+<h2 id="color-eink-tradeoff">The color E Ink trade-off nobody puts on the box clearly</h2>
+
+Color E Ink panels (marketed as E Ink Kaleido 3, used across Kindle
+Colorsoft and Kobo's Clara Colour/Libra Colour lines) work by layering a
+color filter over the same underlying black-and-white E Ink technology
+— and that layering has a real resolution cost that's easy to miss in
+marketing copy:
+
+| Mode | Typical resolution |
+|---|---|
+| Black & white text | 300 PPI |
+| Color content (covers, highlights, color notes) | 150 PPI |
+
+Color content on these screens renders at **half the pixel density** of
+black-and-white text on the same physical panel. That's not a defect —
+it's how the color filter layer works — but it means a color e-reader's
+actual text-reading sharpness for standard novels is unaffected (still
+300 PPI), while covers, colored highlights, and any color-illustrated
+content will look visibly softer than the crisp black-and-white text
+around them.
+
+<Callout kind="verified" title="Not a marketing shortcut, a real physical trade-off">
+Color E Ink panels also typically display around 4,096 distinct colors
+— vivid enough for book covers and basic annotation color-coding, but
+nowhere near the color range of an LCD or OLED tablet screen. If color
+accuracy for detailed images matters more than paper-like reading
+comfort and battery life, a tablet remains the better tool for that
+specific job.
+</Callout>
+
+<h2 id="ecosystem-lock-in">The real long-term decision: file format lock-in</h2>
+
+The more consequential difference between the two major ecosystems isn't
+screen tech at all — it's which file formats and bookstores you're
+committing to:
+
+- **Kindle** uses Amazon's own formats (KFX, MOBI) natively. EPUB files
+  — the format used by most independent bookstores, public libraries,
+  and non-Amazon purchases — have to be converted before they'll display
+  properly, which can affect complex formatting in technical books,
+  textbooks, or heavily illustrated titles.
+- **Kobo** natively supports EPUB, meaning books bought from independent
+  stores, sideloaded personal files, and many library-borrowed titles
+  work without a conversion step.
+- **Library borrowing** differs too: Kindle devices support multiple
+  simultaneous library cards through the Libby app, while Kobo devices
+  are generally limited to one active library card at a time — the
+  opposite of the format-openness pattern, and worth checking against
+  your own library habits specifically.
+
+<h2 id="waterproofing">Waterproofing isn't universal, even within one brand's lineup</h2>
+
+It's a common assumption that "e-readers are waterproof" as a category,
+but rated water resistance (commonly IPX8 certification) is a
+**model-specific feature**, not a category-wide standard. Kobo's Clara
+Colour and Libra Colour carry IPX8 certification; Amazon's entry-level,
+non-Paperwhite Kindle models have historically shipped **without** water
+resistance at all. Checking the specific model's IP rating — not
+assuming it from the brand or category — matters if poolside or bathtub
+reading is part of your actual use case.
+
+<h2 id="spec-table">Spec-for-spec: entry-level to premium</h2>
+
+| Tier | Example | Screen | Storage | Battery |
+|---|---|---|---|---|
+| Entry | Amazon Kindle (base model) | 6" E Ink, 300 PPI | 16GB | Up to 4 weeks |
+| Mid-range | Kobo Libra Colour | 7" Kaleido 3 color | 32GB | ~14 hours screen-on time |
+| Premium (note-taking) | Kindle Scribe | Larger E Ink panel | 16–64GB | Up to 12 weeks |
+
+<Callout kind="caveat" title="Battery figures aren't directly comparable across the table above">
+"Weeks of battery" and "hours of screen-on time" are two different
+measurement conventions used across different manufacturer spec sheets —
+generally, weeks-based figures assume typical daily reading with the
+screen mostly idle between page turns, while hours-based figures measure
+continuous active screen time. Don't read a "14 hours" spec as worse than
+a "12 weeks" spec without checking which measurement convention each
+uses.
+</Callout>
+
+<h2 id="how-to-choose">How to actually choose</h2>
+
+1. **If you mostly read novels and nonfiction without much color
+   content**, the resolution trade-off of color E Ink won't matter —
+   prioritize battery life and screen size instead.
+2. **If most of your books come from one major retailer already**, let
+   that ecosystem decide the brand — converting an entire personal
+   library after the fact is the more painful mistake to make.
+3. **If you borrow from public libraries regularly**, check both the
+   file-format and simultaneous-library-card behavior against your own
+   library's specific system before choosing.
+4. **If poolside/bath reading is a real use case**, verify the specific
+   model's IP rating directly — don't assume it from the product
+   category or brand name.
+
+<h2 id="bottom-line">Bottom line</h2>
+
+E-ink's weeks-long battery life is a genuine, physics-based advantage
+over any backlit tablet screen, and color E Ink's resolution trade-off is
+a real but narrow limitation that mostly affects covers and highlights,
+not body text. The decision that actually locks you in for years,
+though, is ecosystem: which file formats and bookstore your device
+prefers natively — and that's worth more research than the screen
+spec most buyers focus on first.

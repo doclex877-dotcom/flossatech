@@ -7,16 +7,11 @@ ready to deploy on Vercel with your own AdSense account.
 
 - **No AdSense code anywhere** — safe to plug in the client's own
   publisher ID.
-- **5 fully written, real-data-sourced articles** (2,500+ words each,
-  table of contents, real comparison tables, SVG charts):
-  1. `power-bank-real-capacity-test` — power bank mAh math explained
-  2. `best-budget-smartphones-under-200` — real specs/pricing, Aug 2026
-  3. `robot-vacuum-buying-guide` — Pa rating explainer
-  4. `true-wireless-earbuds-battery-life` — battery-claim testing methodology
-  5. `best-laptops-for-students-2026` — real battery claim vs. tested data
-- **15 more topics roadmapped** in `lib/articles.ts` (status:
-  `"coming-soon"`) — shows on `/blog` as "Coming up next" so the site
-  doesn't look empty while you finish writing them.
+- **All 20 articles fully written and published** (2,500+ words each,
+  table of contents, real comparison tables, SVG charts, sourced from
+  real research — manufacturer datasheets, regulatory standards like
+  IEC 60529 and USB-IF specs, peer-reviewed studies, and named outlets'
+  disclosed testing methodology). Full list in `lib/articles.ts`.
 - **Full legal page set**: Privacy Policy, Cookie Policy, Terms of
   Service, Editorial Policy, Affiliate Disclosure — all AdSense-aware
   (mention ad cookies, opt-out links, etc.) but marked as templates that
@@ -76,7 +71,17 @@ via the `Script` component from `next/script`), and place ad units
 wherever you want them in the article layout
 (`app/blog/(article)/layout.tsx`) or listing pages.
 
-## Writing a new article
+## Build fix already applied (important — don't revert)
+
+`package.json`'s build script is `"next build --webpack"`, not the
+default `"next build"`. This is required: Next.js 16 defaults to
+Turbopack, which fails on this project's MDX plugin configuration
+(`remarkGfm`/`rehypeSlug` passed as functions aren't Turbopack-
+serializable). If you ever "clean up" this script back to plain
+`next build`, the Vercel build will fail with a
+`does not have serializable options` error. Leave it as-is.
+
+## Writing a new article (if you add a 21st+ topic later)
 
 1. Add an entry to `lib/articles.ts` (flip `status` to `"published"`
    once written).

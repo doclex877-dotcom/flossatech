@@ -1,0 +1,144 @@
+import ArticleHeader from "@/components/ArticleHeader";
+import TOC from "@/components/TOC";
+import Callout from "@/components/Callout";
+
+<ArticleHeader
+  title="Wireless Chargers: The Qi Standard, Wattage Classes, and Why Heat Slows Them Down"
+  dek="A 25W-rated wireless charger doesn't sustain 25W for long. The coil-to-coil handoff loses energy as heat, and heat is exactly what slows the next watt down."
+  category="Accessories"
+  date="2026-10-05"
+  readMins={15}
+  verdictScore={83}
+/>
+
+<TOC
+  items={[
+    { id: "how-it-works", text: "How Qi wireless charging actually transfers power" },
+    { id: "qi2-vs-qi2.2", text: "Qi2's two speed tiers, and why the naming is confusing" },
+    { id: "the-magnet-advantage", text: "What the magnets actually fix" },
+    { id: "the-heat-problem", text: "The heat problem: why a 25W-rated charger rarely sustains 25W" },
+    { id: "wired-vs-wireless-efficiency", text: "Wired vs. wireless: the efficiency gap that never fully closes" },
+    { id: "what-you-need-for-full-speed", text: "What you actually need for the full rated speed" },
+    { id: "reading-a-listing", text: "How to read a wireless charger listing" },
+    { id: "bottom-line", text: "Bottom line" },
+  ]}
+/>
+
+<h2 id="how-it-works">How Qi wireless charging actually transfers power</h2>
+
+**Qi** (pronounced "chee") is the open wireless charging standard
+maintained by the Wireless Power Consortium (WPC), and it works through
+**electromagnetic induction**: a transmitter coil in the charging pad
+generates a fluctuating magnetic field, which induces a current in a
+receiver coil inside the phone, without any direct electrical contact
+between the two. It's a genuinely elegant mechanism — and, as with any
+energy transfer that isn't a direct wired connection, it's inherently
+less efficient than plugging in a cable.
+
+<h2 id="qi2-vs-qi2.2">Qi2's two speed tiers, and why the naming is confusing</h2>
+
+"Qi2" on a product box currently refers to **two different speed
+tiers**, and packaging doesn't always distinguish them clearly:
+
+| Tier | Max speed | Notes |
+|---|---|---|
+| Original Qi2 (finalized late 2023) | 15W | Matches Apple's MagSafe rate; the speed most Qi2 phones and chargers on the market actually deliver |
+| Qi2.2 / Qi v2.2.1 (launched mid-2025) | 25W | Roughly a 67% increase over the 15W tier; requires a 25W-class phone, charger, **and** a 30W+ USB-C PD wall adapter to actually reach |
+
+Hitting the full 25W isn't just about buying a "25W" charger — every
+link in the chain (wall adapter, charging pad, and phone) has to support
+the higher tier, or the system falls back to the lower common
+denominator.
+
+<h2 id="the-magnet-advantage">What the magnets actually fix</h2>
+
+Qi2's headline feature is built-in magnetic alignment (a **Magnetic
+Power Profile**, conceptually similar to Apple's MagSafe), and it solves
+a real efficiency problem rather than just a convenience one:
+**coil-to-coil misalignment** — the phone sitting even slightly off-
+center on the pad — reduces charging efficiency and increases heat
+generation during transfer. By snapping the phone into a fixed, correct
+position magnetically, Qi2 charging is more consistently efficient
+charge to charge, not just easier to place down correctly.
+
+<Callout kind="verified" title="Not every 'Qi2' phone has this built in">
+iPhone 12 and newer, along with the Pixel 10, have the magnetic array
+built into the phone itself. Several other phones (Galaxy S25 and
+various OnePlus models among them) are "Qi2 Ready" — meaning they
+support the Qi2 charging protocol but need an added magnetic case to get
+the actual alignment benefit. Check which category a specific phone
+falls into before assuming magnetic snap-alignment is included.
+</Callout>
+
+<h2 id="the-heat-problem">The heat problem: why a 25W-rated charger rarely sustains 25W</h2>
+
+Every coil-to-coil wireless power handoff loses a meaningful share of
+transferred energy as heat — this is true even under good alignment,
+and it compounds at higher wattages. That's why a charger rated for 25W
+frequently can't sustain that full output for an extended charging
+session: as the coils heat up, some chargers and phones throttle output
+specifically to manage temperature, meaning the *rated* wattage and the
+*sustained real-world average* wattage over a full charge cycle are two
+different numbers. Some higher-wattage wireless chargers now include
+**active cooling fans** specifically to manage this — a component that
+exists only because heat, not the coil design itself, is the practical
+ceiling on sustained wireless charging speed.
+
+<h2 id="wired-vs-wireless-efficiency">Wired vs. wireless: the efficiency gap that never fully closes</h2>
+
+Independent of any specific product's design quality, wireless charging
+carries a structural efficiency disadvantage against a wired connection:
+commonly cited figures put wireless charging at roughly **10–20% more
+total energy loss** than an equivalent wired charge, due to the
+induction handoff itself. Qi2's magnetic alignment narrows this gap
+compared to older, unaligned Qi charging (one estimate puts the heat
+reduction from proper alignment at roughly **30%**), but it doesn't
+eliminate the fundamental physics gap between induction and a direct
+electrical connection.
+
+<h2 id="what-you-need-for-full-speed">What you actually need for the full rated speed</h2>
+
+To actually reach a charger's advertised top wireless speed, every
+component in the chain needs to support it:
+
+1. **A phone with the matching wattage class** (15W or 25W Qi2 tier)
+2. **A charging pad rated for that same or higher wattage**
+3. **A USB-C PD wall adapter rated meaningfully above the wireless
+   charger's output** (commonly 30W+ for a 25W wireless charging pad,
+   since the pad itself has conversion overhead)
+4. **A cable that supports the required USB PD protocol version**,
+   since an underspecified cable can prevent the higher wattage from
+   negotiating at all
+
+Missing any one link in that chain silently caps the whole system at
+whatever the weakest component supports — a genuinely 25W-capable phone
+on a genuinely 25W-capable pad will still charge at a lower speed if the
+wall adapter behind it isn't rated high enough.
+
+<h2 id="reading-a-listing">How to read a wireless charger listing</h2>
+
+1. **Check whether "Qi2" means the 15W or 25W tier** specifically — the
+   name alone doesn't tell you, and most current Qi2 hardware is still
+   the 15W tier.
+2. **Confirm your specific phone has built-in magnets or needs a case**
+   before assuming Qi2's alignment benefit applies out of the box.
+3. **Buy a wall adapter rated above the wireless charger's stated
+   output**, not equal to it, since the pad itself has conversion
+   overhead.
+4. **Don't expect a charger's peak rated wattage to hold for an entire
+   charging session** — thermal throttling at higher wattages is normal
+   behavior, not a defect, and is exactly why active-cooling models
+   exist at the top of the market.
+
+<h2 id="bottom-line">Bottom line</h2>
+
+Wireless charging's speed and heat behavior come down to the same
+underlying physics: every watt transferred through induction rather
+than a direct wired connection loses more to heat than a cable would,
+and that heat is precisely what limits how long a charger can sustain
+its rated peak output. Qi2's magnetic alignment is a genuine, measurable
+efficiency improvement over unaligned Qi charging, not just a
+convenience feature — but it narrows the wired-vs-wireless efficiency
+gap rather than closing it, and a charger's advertised wattage remains a
+best-case peak, not a number you should expect to see sustained for an
+entire charge.

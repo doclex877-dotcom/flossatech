@@ -1,0 +1,164 @@
+import ArticleHeader from "@/components/ArticleHeader";
+import TOC from "@/components/TOC";
+import BarChart from "@/components/BarChart";
+import Callout from "@/components/Callout";
+
+<ArticleHeader
+  title="Budget Phone Cameras vs. Flagships: What the Sensor Specs Actually Explain"
+  dek="A 200MP budget phone camera and a 48MP flagship camera aren't competing on the same axis. Here's the physics the megapixel number hides."
+  category="Smartphones"
+  date="2026-09-05"
+  readMins={20}
+  verdictScore={78}
+/>
+
+<TOC
+  items={[
+    { id: "the-pie-analogy", text: "The megapixel number that means less than it looks" },
+    { id: "sensor-size-tiers", text: "What sensor size actually looks like across price tiers" },
+    { id: "pixel-binning", text: "Pixel binning: how a 108MP sensor becomes a 12MP photo, on purpose" },
+    { id: "aperture", text: "Aperture: the other half of the light equation" },
+    { id: "the-pixel-9a-case", text: "The exception that proves the rule: same sensor, different phone" },
+    { id: "where-budget-actually-loses", text: "Where a budget camera actually falls behind" },
+    { id: "reading-a-camera-spec", text: "How to read a phone camera spec sheet" },
+    { id: "bottom-line", text: "Bottom line" },
+  ]}
+/>
+
+<h2 id="the-pie-analogy">The megapixel number that means less than it looks</h2>
+
+A $180 budget phone can advertise a 200-megapixel main camera. A $1,000
+flagship might list "only" 48 megapixels. On paper, the budget phone
+looks like it won. In practice, the flagship will produce visibly better
+photos in almost every condition except bright daylight — because
+megapixel count and actual image quality are governed by mostly
+different physics.
+
+The simplest way to think about it: a camera sensor is like a pie. A
+200-megapixel sensor and a 48-megapixel sensor can be cut into very
+different numbers of slices, but if the 200MP sensor's pie is
+physically much smaller, each of its 200 million slices is
+correspondingly tinier — and smaller slices (photosites) gather less
+light each, regardless of how many of them there are.
+
+<h2 id="sensor-size-tiers">What sensor size actually looks like across price tiers</h2>
+
+Physical sensor size is measured in a fraction-of-an-inch notation
+(1/1.3", 1", etc. — larger denominator means a smaller physical sensor),
+and it correlates closely with phone price tier:
+
+| Price tier | Typical main sensor size |
+|---|---|
+| Budget (under $400) | 1/2.76" or smaller |
+| Mid-range ($400–$900) | 1/1.95" to 1/1.56" |
+| Flagship ($1,200+) | 1/1.3" to 1" |
+
+<BarChart
+  title="Relative main sensor area by phone price tier (illustrative index)"
+  unit=""
+  data={[
+    { label: "Budget (<$400)", value: 1 },
+    { label: "Mid-range ($400–900)", value: 2.4 },
+    { label: "Flagship ($1,200+)", value: 5.8, highlight: true },
+  ]}
+  sourceNote="Illustrative relative sensor-area index derived from commonly cited fraction-of-an-inch sensor size ranges by price tier; actual area scales with the square of the sensor's linear dimensions."
+/>
+
+A larger sensor area means each individual photosite — even before any
+binning — can physically be bigger, which directly improves low-light
+performance, reduces visible noise, and improves dynamic range (the
+sensor's ability to hold detail in both bright skies and dark shadows in
+the same shot).
+
+<h2 id="pixel-binning">Pixel binning: how a 108MP sensor becomes a 12MP photo, on purpose</h2>
+
+Nearly every high-megapixel phone camera, budget and flagship alike, uses
+**pixel binning**: combining a cluster of adjacent small photosites — 4,
+9, or 16 of them — into one larger "virtual" pixel for the final image.
+A concrete, real example: the Samsung Galaxy S25 Ultra's advertised
+200-megapixel sensor **defaults to a 12.5-megapixel output** in normal
+shooting, combining 16 physical photosites into each final pixel to
+gather roughly 16 times more light per pixel than an unbinned shot would.
+
+That's not a bug or a compromise being hidden from you — it's the
+correct, intentional way to use that sensor for most photos. Shooting at
+the full 200MP resolution is possible but generally requires a tripod,
+manual RAW capture, and heavy post-processing to be usable, which is why
+it's rarely how anyone actually shoots day to day.
+
+<Callout kind="verified" title="The megapixel number on the box is a ceiling, not the default">
+When a spec sheet lists "200MP," that's the sensor's maximum physical
+resolution, not the resolution most photos will actually be captured at.
+Nearly all everyday shots from that same sensor are binned down to
+somewhere between 12MP and 50MP for better light-gathering per pixel.
+</Callout>
+
+<h2 id="aperture">Aperture: the other half of the light equation</h2>
+
+Aperture — the size of the opening that lets light onto the sensor,
+written as an f-number like f/1.8 — is the other major factor, and it
+works in reverse of what the number suggests: **a lower f-number means a
+wider opening**, letting in more light. A phone with a f/1.4 aperture
+lets in meaningfully more light than one at f/1.9, independent of sensor
+size entirely. Flagship phones increasingly pair a larger sensor **and**
+a wider (lower f-number) aperture, which is why the gap compounds rather
+than just adding up.
+
+<h2 id="the-pixel-9a-case">The exception that proves the rule: same sensor, different phone</h2>
+
+Sensor size and price don't move in perfect lockstep — a useful
+real-world exception is Google's Pixel 9a, a sub-$500 phone that uses the
+**same main sensor and image signal processor** as the significantly
+more expensive Pixel 10 Pro. It omits the telephoto and ultrawide lenses
+entirely, but for main-camera still photography — especially in daylight
+and controlled indoor lighting — it's been assessed as delivering
+roughly **90% of the flagship's still-image quality** at a fraction of
+the price.
+
+That's the real lesson underneath the sensor-size tables: the main
+camera's core hardware is where the biggest, most consistent quality gap
+lives, but manufacturers don't always allocate that hardware in strict
+proportion to overall phone price. Checking the specific main sensor
+model, when a manufacturer publishes it, can occasionally reveal a
+budget or mid-range phone punching well above its price tier.
+
+<h2 id="where-budget-actually-loses">Where a budget camera actually falls behind</h2>
+
+Even accounting for the Pixel 9a-style exception, budget phones
+consistently lose ground to flagships in a few specific, physics-driven
+areas that no amount of software processing fully closes:
+
+| Situation | Why budget hardware struggles |
+|---|---|
+| Low light / night shots | Smaller sensor + smaller aperture = less raw light captured before any software correction |
+| Telephoto zoom past 3x | True optical zoom requires a periscope lens system that's expensive to miniaturize; budget phones mostly rely on digital cropping, which loses detail rapidly |
+| Dynamic range in mixed lighting | Smaller sensors have less physical headroom to capture both bright and dark areas in one exposure |
+| Video stabilization | Premium optical image stabilization (OIS) hardware is more consistently included on flagships; budget phones lean more on electronic (software) stabilization alone |
+
+<h2 id="reading-a-camera-spec">How to read a phone camera spec sheet</h2>
+
+1. **Ignore the raw megapixel number as a quality signal.** It tells you
+   the sensor's maximum resolution, not how good typical photos will
+   look.
+2. **Look for the physical sensor size** (often listed only in detailed
+   spec sheets, not marketing pages) — bigger is better for light-
+   gathering, independent of megapixels.
+3. **Check the aperture f-number** — lower means more light, all else
+   equal.
+4. **Treat zoom multipliers past 3x with skepticism** unless the spec
+   sheet specifically confirms a periscope/folded optical zoom lens
+   rather than digital cropping.
+5. **Remember pixel binning is normal, not a downgrade** — a sensor
+   advertised at a huge megapixel count that outputs smaller binned
+   photos by default is working as intended.
+
+<h2 id="bottom-line">Bottom line</h2>
+
+The gap between a budget phone camera and a flagship one is real, but
+it's driven by physical sensor size and aperture, not by the megapixel
+number printed on the box — a fact both budget and flagship marketing
+tend to obscure, just in opposite directions. A budget phone's inflated
+megapixel count and a flagship's comparatively modest one are answering
+different marketing incentives, not different levels of engineering
+honesty, and the sensor-size and aperture figures underneath are where
+the real story is.

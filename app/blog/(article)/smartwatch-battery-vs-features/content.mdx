@@ -1,0 +1,161 @@
+import ArticleHeader from "@/components/ArticleHeader";
+import TOC from "@/components/TOC";
+import BarChart from "@/components/BarChart";
+import Callout from "@/components/Callout";
+
+<ArticleHeader
+  title="Smartwatches: What Turning On Each Feature Actually Costs in Battery Life"
+  dek="Always-on display, continuous heart rate, GPS mode — each one has a real, measurable battery cost, and it's rarely the one buyers expect."
+  category="Wearables"
+  date="2026-09-01"
+  readMins={20}
+  verdictScore={80}
+/>
+
+<TOC
+  items={[
+    { id: "two-tribes", text: "Two very different battery-life claims" },
+    { id: "aod-tax", text: "The always-on display tax — and why it depends entirely on the screen type" },
+    { id: "heart-rate-cost", text: "Continuous heart rate monitoring's real cost" },
+    { id: "gps-mode-split", text: "Why 'battery life' means two different numbers" },
+    { id: "brightness-cold", text: "Brightness and cold weather" },
+    { id: "real-numbers", text: "Real claimed-vs-tested numbers" },
+    { id: "priority-order", text: "The priority order for extending battery life" },
+    { id: "bottom-line", text: "Bottom line" },
+  ]}
+/>
+
+<h2 id="two-tribes">Two very different battery-life claims</h2>
+
+Smartwatch battery claims range from "charge it every night" (most
+AMOLED smartwatches) to "27 days" (the Amazfit T-Rex 3) to "36 days"
+(the Garmin Enduro 3, in its low-power smartwatch mode). That's not
+different tiers of the same product — it's fundamentally different
+display and sensor engineering, and the single biggest lever isn't the
+battery cell size, it's which features are switched on.
+
+<h2 id="aod-tax">The always-on display tax — and why it depends entirely on the screen type</h2>
+
+Always-on display (AOD) is the single most commonly cited battery drain
+in smartwatch reviews, but its actual cost depends entirely on the
+underlying screen technology:
+
+- **AMOLED displays** (Apple Watch, Samsung Galaxy Watch, most Wear OS
+  watches) have to keep individual pixels actively lit to show anything
+  at all times. Reviewers commonly report AOD adding **25–35% additional
+  battery drain** on AMOLED watches — on a Samsung Galaxy Watch Ultra,
+  turning AOD off has been reported to add a full **two extra days** of
+  runtime.
+- **MIP (memory-in-pixel) displays** — used on Garmin's Enduro, Instinct,
+  and most COROS watches — work completely differently: each pixel
+  "remembers" its state and only redraws when content changes, using
+  essentially no additional power to stay visible. On these watches, AOD
+  is the default, not an optional battery-draining feature at all.
+
+<Callout kind="note" title="Same feature name, different physics">
+"Always-on display" is a single marketing term hiding two completely
+different amounts of real battery cost. If all-day visible time-checking
+matters to you and battery life is also a priority, the display
+technology matters more than any other single spec on the watch.
+</Callout>
+
+<h2 id="heart-rate-cost">Continuous heart rate monitoring's real cost</h2>
+
+Every modern smartwatch uses PPG (photoplethysmography) sensors — LEDs
+shining into the wrist and measuring reflected light changes to infer
+heart rate — and running that sensor continuously draws power constantly,
+not just during a workout. Switching from continuous polling to interval
+checking (commonly every 10–30 minutes) has been measured to recover
+**20–30% of total battery life**, with most users reporting no
+meaningful loss in the daily health metrics they actually check.
+
+<h2 id="gps-mode-split">Why "battery life" means two different numbers</h2>
+
+Fitness-focused watches typically publish **two separate battery
+figures**, and conflating them is a common source of buyer confusion:
+
+| Mode | What it means | Typical real-world range |
+|---|---|---|
+| "Smartwatch mode" | Normal daily wear: notifications, steps, no active GPS tracking | Days to weeks, depending on display type |
+| "GPS mode" (continuous tracking) | Active workout tracking with GPS running continuously | Hours, not days — even on watches with multi-week smartwatch-mode ratings |
+
+A watch advertised at "27 days" is almost always describing smartwatch
+mode; the same watch's continuous multi-band GPS tracking figure is a
+completely different, much shorter number (the Amazfit T-Rex 3, for
+example, is separately rated around 180 hours of continuous GPS mode —
+which sounds long in isolation but represents a dramatically faster
+drain rate than its smartwatch-mode figure implies).
+
+<BarChart
+  title="Same watch, two battery modes (illustrative ratios)"
+  unit=""
+  data={[
+    { label: "Smartwatch mode (days, indexed)", value: 27 },
+    { label: "Continuous GPS mode (days, indexed)", value: 7.5, highlight: true },
+  ]}
+  sourceNote="Illustrative comparison based on commonly published dual-mode smartwatch battery ratings (smartwatch mode vs. continuous GPS mode), 2026."
+/>
+
+<h2 id="brightness-cold">Brightness and cold weather</h2>
+
+Two environmental factors compound on top of feature settings:
+
+- **Screen brightness at 100%** has been measured to consume roughly
+  **30–40% more power** than running at 50% brightness with automatic
+  brightness disabled.
+- **Cold weather** reduces real-world battery performance by roughly
+  **20–30%**, consistent with how lithium-ion/lithium-polymer cells
+  generally lose effective capacity at low temperatures, independent of
+  any setting on the watch itself.
+
+<h2 id="real-numbers">Real claimed-vs-tested numbers</h2>
+
+The gap between a manufacturer's official rating and independent
+review-tested results isn't one-directional — sometimes tested results
+beat the official claim, because official ratings are often deliberately
+conservative to cover worst-case usage:
+
+| Watch | Manufacturer claim | Independent testing found |
+|---|---|---|
+| Google Pixel Watch 4 (45mm) | Up to 40 hours (AOD on) | Exceeded the official rating in review testing |
+| Garmin Enduro 3 | 36 days (smartwatch mode) | 28–32 days with HR monitoring + GPS sessions logged |
+| Amazfit T-Rex 3 | 27 days (standard use) | Independently confirmed in the same range |
+
+<Callout kind="caveat" title="Manufacturer ratings aren't always inflated">
+Unlike the "up to" video-loop-style claims common on laptops and phones
+(covered in our laptop battery guide), several smartwatch manufacturers'
+official ratings held up closely or were exceeded in independent
+testing — the bigger source of disappointment for most owners is turning
+on AOD, continuous HR, and full brightness simultaneously, not a
+misleading headline spec.
+</Callout>
+
+<h2 id="priority-order">The priority order for extending battery life</h2>
+
+If you want meaningfully longer battery life on a watch you already own,
+independent testing consistently ranks these changes by impact, highest
+first:
+
+1. **Turn off always-on display** (AMOLED watches only — MIP watches
+   don't need this)
+2. **Switch continuous heart-rate monitoring to interval mode**
+   (every 15–30 minutes)
+3. **Disable continuous SpO2 monitoring** if you don't specifically need
+   it tracked overnight
+4. **Cap brightness and enable auto-brightness** rather than running
+   fixed at 100%
+5. **Filter notifications** — every notification wakes the display and
+   vibration motor; disabling low-priority app categories reduces wake
+   events measurably over a full day
+
+<h2 id="bottom-line">Bottom line</h2>
+
+A smartwatch's battery-life spec is really several independent claims
+bundled into one number: display technology (AMOLED vs. MIP), heart-rate
+polling frequency, GPS mode vs. smartwatch mode, and brightness setting
+all move the real result independently. Two watches with an identical
+"battery life: X days" listing can behave completely differently once
+you turn on the specific combination of features you actually use — which
+is exactly why matching display technology and sensor habits to your own
+priorities matters more than chasing the single biggest number on the
+spec sheet.

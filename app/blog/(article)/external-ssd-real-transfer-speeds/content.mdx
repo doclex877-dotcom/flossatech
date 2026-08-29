@@ -1,0 +1,149 @@
+import ArticleHeader from "@/components/ArticleHeader";
+import TOC from "@/components/TOC";
+import BarChart from "@/components/BarChart";
+import Callout from "@/components/Callout";
+
+<ArticleHeader
+  title="Portable SSDs: Advertised Speeds vs. the Interface Bottleneck That Caps Them"
+  dek="A 2,000MB/s external SSD can run at 400MB/s on the wrong port. The drive isn't defective — the USB connection is the actual limit."
+  category="Storage"
+  date="2026-10-14"
+  readMins={17}
+  verdictScore={84}
+/>
+
+<TOC
+  items={[
+    { id: "the-usb-c-trap", text: "The USB-C trap: a connector shape isn't a speed" },
+    { id: "the-generation-naming-mess", text: "USB's generation naming is genuinely confusing, and that's not an accident of marketing" },
+    { id: "the-real-throughput-gap", text: "Theoretical bandwidth vs. what actually arrives" },
+    { id: "the-full-bottleneck-chain", text: "Every link in the chain that can be the weakest one" },
+    { id: "a-real-example", text: "The same drive, two ports, very different numbers" },
+    { id: "when-it-actually-matters", text: "When this actually matters for real work" },
+    { id: "reading-a-listing", text: "How to read an external SSD listing" },
+    { id: "bottom-line", text: "Bottom line" },
+  ]}
+/>
+
+<h2 id="the-usb-c-trap">The USB-C trap: a connector shape isn't a speed</h2>
+
+**USB-C describes a connector's physical shape, not its data rate.**
+Two visibly identical USB-C cables or ports can support radically
+different speeds — anything from USB 2.0's 480Mbps up to USB4's
+multi-gigabit rates — with no way to tell which is which just by
+looking at the port. This single fact underlies most of the confusion
+around external SSD speed complaints: plugging a fast drive into a
+slow-but-identical-looking port produces a real, physical speed
+limitation that has nothing to do with the drive's actual capability.
+
+<h2 id="the-generation-naming-mess">USB's generation naming is genuinely confusing, and that's not an accident of marketing</h2>
+
+USB naming conventions have changed enough times that even attentive
+shoppers get tripped up:
+
+| Name | Also known as | Theoretical max |
+|---|---|---|
+| USB 3.2 Gen 1 | USB 3.0 / "SuperSpeed USB 5Gbps" | 5 Gbps |
+| USB 3.2 Gen 2 | USB 3.1 Gen 2 / "SuperSpeed USB 10Gbps" | 10 Gbps |
+| USB 3.2 Gen 2x2 | — | 20 Gbps (requires a certified USB-C cable) |
+| Thunderbolt 3/4, USB4 | — | 40 Gbps |
+
+A device or port's actual generation isn't reliably visible from the
+port shape or cable alone — it has to be checked against the specific
+product's stated specifications.
+
+<h2 id="the-real-throughput-gap">Theoretical bandwidth vs. what actually arrives</h2>
+
+Even a correctly matched interface doesn't deliver its full theoretical
+bandwidth in practice, because protocol overhead and encoding consume
+part of the available capacity. Real-world measured results consistently
+land meaningfully below the theoretical ceiling:
+
+<BarChart
+  title="Theoretical vs. real-world measured throughput by USB generation"
+  unit=" MB/s"
+  data={[
+    { label: "USB 3.2 Gen 1 — theoretical (5Gbps)", value: 625 },
+    { label: "USB 3.2 Gen 1 — measured", value: 400 },
+    { label: "USB 3.2 Gen 2 — theoretical (10Gbps)", value: 1250 },
+    { label: "USB 3.2 Gen 2 — measured", value: 800, highlight: true },
+  ]}
+  sourceNote="Theoretical figures converted from Gbps to MB/s; measured figures from real-world SSD throughput testing on each USB generation, 2026."
+/>
+
+That gap — roughly 35–40% below the theoretical ceiling in both cases
+shown above — is normal overhead, not a sign of a faulty drive or port.
+
+<h2 id="the-full-bottleneck-chain">Every link in the chain that can be the weakest one</h2>
+
+External SSD performance is determined by the **slowest link** across
+several distinct components, not the SSD alone:
+
+1. **The NAND flash and SSD controller** inside the drive itself
+2. **The enclosure's bridge controller**, which translates between the
+   internal drive's native protocol (NVMe or SATA) and USB — its
+   firmware and chip quality independently affect achievable speed
+3. **The cable**, which can bottleneck a fast drive and fast port alike
+   if it's only rated for a lower USB generation
+4. **The host computer's USB controller and port**, which must support
+   the matching generation to avoid capping everything upstream of it
+
+<Callout kind="note" title="Some enclosures also protocol-downgrade for compatibility">
+Older or cheaper enclosures may only support the basic USB Mass Storage
+protocol rather than UASP (USB Attached SCSI Protocol), which handles
+multiple simultaneous storage commands more efficiently. Two drives with
+identical internal SSDs and the same rated USB generation can still
+perform differently if one enclosure supports UASP and the other
+doesn't.
+</Callout>
+
+<h2 id="a-real-example">The same drive, two ports, very different numbers</h2>
+
+A concrete illustration of how much a single mismatched link can cost:
+one tested configuration put a 2TB NVMe SSD in a Thunderbolt 3 enclosure,
+measuring **3,200 MB/s** on a laptop with a supporting Thunderbolt port —
+and just **950 MB/s** on the identical drive and enclosure connected via
+a USB 3.2 Gen 2 port instead. Same drive, same enclosure, same data —
+roughly a **70% drop** purely from the port on the other end of the
+cable.
+
+<h2 id="when-it-actually-matters">When this actually matters for real work</h2>
+
+For everyday file transfers — moving a handful of documents, photos, or
+small folders — the difference between a drive hitting its full
+advertised speed and running at half of it is often not perceptible in
+practice, since the transfer finishes quickly either way. The gap
+becomes genuinely consequential in specific, sustained, large-file
+workflows: **video editing directly off an external drive, importing or
+exporting large photo libraries, or moving tens of gigabytes at a
+stretch** — exactly the use cases where a drive's top-line speed was the
+reason to buy it in the first place.
+
+<h2 id="reading-a-listing">How to read an external SSD listing</h2>
+
+1. **Check both the drive's rated interface and your computer's actual
+   port generation** — a mismatch caps performance at the slower of the
+   two, every time.
+2. **Match your cable to the interface generation you're trying to
+   use** — a cable rated for a lower USB generation than your drive and
+   port support will bottleneck the connection regardless of what either
+   end is capable of.
+3. **Treat the advertised MB/s figure as a best-case, correctly-matched
+   number**, not a guarantee — expect real sustained throughput to land
+   meaningfully below it even under ideal conditions, due to normal
+   protocol overhead.
+4. **If sustained, high-speed transfer is the actual use case** (video
+   editing, large backups), verify Thunderbolt/USB4 support on both the
+   drive and the specific port you'll use — not just "USB-C" as a
+   category.
+
+<h2 id="bottom-line">Bottom line</h2>
+
+An external SSD's advertised speed describes what the drive can do under
+a correctly matched, best-case connection — and "USB-C" alone doesn't
+tell you whether that match exists on your specific setup. The
+interface (port generation, cable rating, and enclosure controller
+quality) is frequently the actual limiting factor, not the SSD's own
+hardware, which is exactly why the same drive can post dramatically
+different real-world numbers depending on nothing more than which port
+it's plugged into.

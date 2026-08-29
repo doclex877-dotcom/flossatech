@@ -1,0 +1,157 @@
+import ArticleHeader from "@/components/ArticleHeader";
+import TOC from "@/components/TOC";
+import BarChart from "@/components/BarChart";
+import Callout from "@/components/Callout";
+
+<ArticleHeader
+  title="Budget Noise-Cancelling Headphones: How Close Can Cheap ANC Get to Flagship Silence?"
+  dek="Independent lab testing puts most ANC headphones within a narrower dB range than the price gap between them suggests."
+  category="Audio"
+  date="2026-10-08"
+  readMins={18}
+  verdictScore={85}
+/>
+
+<TOC
+  items={[
+    { id: "three-types-of-anc", text: "Three types of ANC, and why the type matters more than price alone" },
+    { id: "what-db-reduction-means", text: "What a dB reduction number actually means" },
+    { id: "the-real-gap", text: "The real measured gap between budget and premium" },
+    { id: "diminishing-returns", text: "Where diminishing returns actually set in" },
+    { id: "what-premium-buys-instead", text: "What the extra money buys, if not more silence" },
+    { id: "real-budget-picks", text: "Real budget models with disclosed test results" },
+    { id: "how-to-shop", text: "How to shop by ANC type and use case" },
+    { id: "bottom-line", text: "Bottom line" },
+  ]}
+/>
+
+<h2 id="three-types-of-anc">Three types of ANC, and why the type matters more than price alone</h2>
+
+Active noise cancellation on the market splits into three tiers of
+sophistication, and which type a specific pair uses predicts its
+real-world performance better than price tier alone:
+
+- **Basic ANC:** uses feedback microphones inside the earcup only,
+  typically reducing noise by roughly **15–20dB** — sufficient for
+  steady, low-frequency sounds like office hum or airplane engine drone.
+- **Hybrid ANC:** combines both feedforward (external) and feedback
+  (internal) microphones, generally handling a wider range of frequencies
+  and sudden noise changes more effectively than basic ANC alone.
+- **Adaptive ANC:** actively adjusts cancellation strength and profile in
+  real time based on detected ambient conditions, rather than applying a
+  fixed cancellation curve regardless of environment.
+
+<h2 id="what-db-reduction-means">What a dB reduction number actually means</h2>
+
+Decibels are measured on a **logarithmic scale**, so the difference
+between, say, 20dB and 30dB of reduction represents a much larger
+real-world drop in perceived loudness than the flat 10-point gap
+suggests — every additional ~10dB of reduction corresponds to roughly
+halving the perceived loudness. This is worth keeping in mind when
+comparing two dB figures: a headphone advertising "5dB more reduction"
+than a competitor isn't a marginal edge, it's a meaningfully more
+noticeable difference in a noisy environment.
+
+<h2 id="the-real-gap">The real measured gap between budget and premium</h2>
+
+Independent lab testing across price tiers has found real, disclosed dB
+reduction figures that narrow the assumed budget-vs-premium gap more
+than most buyers expect:
+
+| Model | Price | Measured/reported ANC reduction |
+|---|---|---|
+| OneOdio Focus A6 | $69 | ~79% noise reduction in lab testing |
+| Soundcore Life Q20 | ~$48 | ~90% ANC reduction (manufacturer/reviewer figure) |
+| A set of six tested pairs across price points | Various | 28–42dB reduction range across all six, in one independent test |
+
+<Callout kind="verified" title="Percentage figures and dB figures aren't directly interchangeable">
+"79% noise reduction" and "35dB reduction" come from different
+measurement conventions (perceived loudness percentage vs. raw decibel
+drop) and shouldn't be directly compared number-to-number across
+different reviewers' test methodologies — the useful signal is the
+overall pattern (strong budget ANC results showing up repeatedly in
+independent testing), not treating these specific figures as
+apples-to-apples across sources.
+</Callout>
+
+<h2 id="diminishing-returns">Where diminishing returns actually set in</h2>
+
+One extensive independent test — evaluating headphones across a $30 to
+$250+ price range — found that spending significantly more than a
+$40–75 sweet spot bought, on average, only **5–8dB of additional ANC
+reduction**, alongside brand recognition and ecosystem features (like
+Apple's W1 chip integration or LDAC hi-res codec support) rather than a
+dramatically quieter listening experience. That same testing effort
+specifically noted some **$30 models outperforming certain $250 premium
+pairs** in particular test scenarios, underscoring that price and ANC
+performance don't scale in a straight line.
+
+<BarChart
+  title="Illustrative ANC dB reduction vs. price (diminishing-returns pattern)"
+  unit=" dB"
+  data={[
+    { label: "$40-75 budget tier", value: 30 },
+    { label: "$250+ premium tier", value: 37, highlight: true },
+  ]}
+  sourceNote="Illustrative representation of the diminishing-returns pattern reported across one extensive independent test spanning $30-250+ headphones: roughly 5-8dB of additional reduction reported moving from the budget sweet spot to premium flagships."
+/>
+
+<h2 id="what-premium-buys-instead">What the extra money buys, if not more silence</h2>
+
+Given the modest ANC dB gap, premium headphones' price differential is
+more accurately understood as buying several other things rather than
+dramatically better noise cancellation specifically:
+
+- **Sound quality and driver tuning** — reviewers consistently note
+  meaningfully better audio fidelity on flagship models, independent of
+  ANC performance.
+- **Build quality and comfort** for extended daily wear.
+- **App ecosystem features** — advanced EQ, spatial audio, multi-device
+  switching, and codec support (LDAC, aptX) skew toward premium models.
+- **Adaptive ANC sophistication** — even where the peak dB reduction is
+  similar, premium adaptive systems often respond faster and more
+  smoothly to changing environments than a budget pair's fixed or
+  slower-adapting profile.
+
+<h2 id="real-budget-picks">Real budget models with disclosed test results</h2>
+
+A few specific, currently available budget options with independently
+reported figures worth knowing:
+
+- **Soundcore Life Q20** (~$48): 60-hour battery, reported ~90% ANC
+  reduction — widely cited as a strong under-$50 pick.
+- **OneOdio Focus A6** ($69): ~79% measured reduction in lab testing,
+  Bluetooth 6.0 with LDAC support (unusually high-resolution codec
+  support for this price point), up to 40 hours of battery with ANC on.
+- **JBL Tune 770NC** (under $150): adaptive ANC with a 70-hour battery,
+  cited as a strong overall pick specifically for buyers wanting
+  adaptive (not just fixed) noise cancellation without flagship pricing.
+
+<h2 id="how-to-shop">How to shop by ANC type and use case</h2>
+
+1. **For steady, low-frequency noise** (office hum, airplane cabin,
+   HVAC), basic ANC in the $40–75 range is very likely sufficient — this
+   is exactly the noise profile basic ANC handles best.
+2. **For variable, unpredictable noise** (busy streets, open offices with
+   conversation, commuting through multiple environments), prioritize
+   hybrid or adaptive ANC specifically, since fixed basic ANC handles
+   sudden or complex noise less consistently.
+3. **Don't assume price predicts dB reduction linearly** — check for a
+   specific, independently tested figure for the exact model you're
+   considering rather than assuming a $250 pair automatically
+   outperforms a $60 one on cancellation alone.
+4. **Weigh sound quality and comfort separately from ANC performance**
+   when justifying a premium purchase — per the testing above, that's
+   where the extra spend is more reliably reflected.
+
+<h2 id="bottom-line">Bottom line</h2>
+
+The gap between budget and premium active noise cancellation is real but
+narrower than the price difference implies: independent testing has
+repeatedly found $40–75 headphones delivering ANC performance within
+roughly 5–8dB of $250+ flagships, with some budget models even
+outperforming premium ones in specific scenarios. If active noise
+cancellation is the primary reason you're buying, that budget tier is a
+genuinely strong starting point — the additional spend at the premium
+tier buys sound quality, build, and app features more reliably than it
+buys dramatically more silence.

@@ -1,0 +1,121 @@
+import ArticleHeader from "@/components/ArticleHeader";
+import TOC from "@/components/TOC";
+import Callout from "@/components/Callout";
+
+<ArticleHeader
+  title="Dash Cam Night Footage: Sensor Size and Aperture, Not Megapixels, Explain the Difference"
+  dek="A 4K dash cam can still produce unreadable license plates at night. Resolution and low-light performance are related, but they're not the same spec."
+  category="Automotive Tech"
+  date="2026-10-02"
+  readMins={16}
+  verdictScore={82}
+/>
+
+<TOC
+  items={[
+    { id: "resolution-isnt-the-answer", text: "Why resolution alone doesn't answer the night-footage question" },
+    { id: "starvis-2", text: "What Sony's STARVIS 2 sensor generation actually changed" },
+    { id: "the-gain-noise-link", text: "The gain-to-noise link that actually predicts grainy footage" },
+    { id: "aperture", text: "Aperture: the other lever, and why f-numbers under 1.8 matter" },
+    { id: "when-footage-matters-most", text: "The footage that matters most is the hardest to capture" },
+    { id: "reading-a-spec-sheet", text: "How to read a dash cam's night-vision claims" },
+    { id: "bottom-line", text: "Bottom line" },
+  ]}
+/>
+
+<h2 id="resolution-isnt-the-answer">Why resolution alone doesn't answer the night-footage question</h2>
+
+A 4K dash cam sounds like an obvious upgrade over a 1080p one, and for
+daytime footage, it generally is — more pixels means more detail when
+there's enough light to fill them with useful information. At night,
+that assumption breaks down: **resolution and low-light performance are
+related but genuinely separate specifications**. A high-megapixel sensor
+with poor low-light sensitivity can still produce grainy, unreadable
+footage after dark, despite a high daytime pixel count that looks great
+on the spec sheet.
+
+<h2 id="starvis-2">What Sony's STARVIS 2 sensor generation actually changed</h2>
+
+Much of the current dash cam market's night-vision marketing centers on
+Sony's **STARVIS 2** sensor architecture — a back-illuminated CMOS
+design specifically engineered for low-light imaging, offering higher
+sensitivity and wider dynamic range than the original STARVIS
+generation. This isn't a rebranding exercise: Sony's own comparison data
+shows a STARVIS 2 sensor (the IMX678) reaching equivalent image
+brightness to an older-generation sensor (the IMX334) at **48dB of
+gain**, compared to **57dB** needed by the older sensor to reach the
+same brightness.
+
+<h2 id="the-gain-noise-link">The gain-to-noise link that actually predicts grainy footage</h2>
+
+That 9dB gain difference matters because of a direct relationship
+between gain and visible noise: gain is essentially amplification, and
+amplifying a weak signal amplifies the noise riding along with it just
+as much as the actual image data. A sensor that needs **less gain** to
+reach a usable brightness level at a given light intensity will,
+consistently, produce a **cleaner image with less visible grain** than
+one that needs to push its gain higher to reach the same brightness.
+
+<Callout kind="verified" title="Two cameras, same resolution, same low-light 'claim' — different results">
+This is exactly why two dash cams can list similar resolution and even
+similar marketing language around "night vision," but produce visibly
+different footage after dark: if one camera's sensor needs meaningfully
+more gain to reach usable brightness at the same ambient light level,
+its footage will show more noise even though neither spec sheet says so
+directly.
+</Callout>
+
+<h2 id="aperture">Aperture: the other lever, and why f-numbers under 1.8 matter</h2>
+
+Independent of sensor generation, **lens aperture** — written as an
+f-number, like f/1.8 or f/1.5 — determines how much light physically
+reaches the sensor before any processing happens at all. Lower f-numbers
+mean wider openings and more light. Dash cams marketed specifically for
+strong night performance commonly pair a STARVIS 2-generation sensor
+with an f/1.5–f/1.8 aperture lens; cameras using slower apertures (higher
+f-numbers) are working with less raw light regardless of how good the
+sensor itself is, similarly to the sensor-plus-aperture relationship
+covered in our budget vs. flagship phone camera guide.
+
+<h2 id="when-footage-matters-most">The footage that matters most is the hardest to capture</h2>
+
+There's a specific reason low-light performance deserves outsized
+attention in this category: accident-relevant dash cam footage is
+disproportionately captured in exactly the conditions that are hardest
+to image well — dusk, dawn, rain, oncoming headlight glare, underground
+parking, and full nighttime driving. A sensor that loses usable detail
+specifically in these conditions is failing precisely in the scenario
+the entire product exists for. Wide Dynamic Range (WDR) processing —
+which balances exposure between very bright areas (oncoming headlights)
+and very dark areas (unlit road) in the same frame — is a meaningfully
+useful feature for this same reason, independent of sensor and aperture
+choice.
+
+<h2 id="reading-a-spec-sheet">How to read a dash cam's night-vision claims</h2>
+
+1. **Don't treat resolution (4K, 2.5K) as a proxy for night
+   performance** — check the sensor model and generation specifically
+   if low-light quality matters to you.
+2. **Look for the actual sensor model number** (e.g., Sony IMX678,
+   IMX675) rather than just a marketing name — the specific sensor
+   generation predicts low-light behavior better than resolution or
+   brand name alone.
+3. **Check the aperture f-number** — f/1.5 to f/1.8 is the range
+   associated with genuinely strong night performance in current
+   products; higher f-numbers mean less light reaching the sensor
+   regardless of sensor quality.
+4. **Confirm WDR/HDR processing is present and active on the mode
+   you'll actually use** — some cameras only apply it in specific
+   resolution or frame-rate settings.
+
+<h2 id="bottom-line">Bottom line</h2>
+
+A dash cam's night-vision quality comes down to a combination of sensor
+generation (how much gain is required to reach usable brightness, and
+therefore how much noise rides along with it) and lens aperture (how
+much raw light reaches the sensor before any processing) — not the
+resolution number that dominates the marketing copy. Two dash cams with
+identical "4K" and "night vision" claims can produce meaningfully
+different footage at 2am, and the sensor model number and aperture
+f-stop, not the megapixel count, are what actually predict which one
+you're looking at.

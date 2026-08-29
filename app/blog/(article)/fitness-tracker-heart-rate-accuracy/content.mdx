@@ -1,0 +1,151 @@
+import ArticleHeader from "@/components/ArticleHeader";
+import TOC from "@/components/TOC";
+import Callout from "@/components/Callout";
+
+<ArticleHeader
+  title="Fitness Tracker Heart-Rate Sensors: Why Wrist-Based PPG Struggles, By Design"
+  dek="Peer-reviewed testing against ECG and chest straps consistently finds wrist heart-rate sensors less accurate during exercise — and the reason is physical, not a software bug."
+  category="Wearables"
+  date="2026-10-11"
+  readMins={17}
+  verdictScore={88}
+/>
+
+<TOC
+  items={[
+    { id: "how-ppg-works", text: "How PPG measures a pulse without touching the blood" },
+    { id: "why-the-wrist-struggles", text: "Why the wrist specifically struggles" },
+    { id: "what-the-research-found", text: "What peer-reviewed testing actually found" },
+    { id: "placement-matters", text: "Placement matters as much as the device itself" },
+    { id: "when-accuracy-is-good", text: "When wrist PPG is actually reliable" },
+    { id: "the-clinical-verdict", text: "The clinical verdict, from the people who need accuracy most" },
+    { id: "practical-guidance", text: "Practical guidance for anyone tracking heart rate" },
+    { id: "bottom-line", text: "Bottom line" },
+  ]}
+/>
+
+<h2 id="how-ppg-works">How PPG measures a pulse without touching the blood</h2>
+
+Nearly every consumer wearable's heart-rate sensor uses **PPG
+(photoplethysmography)**: an LED shines light into the skin, and a
+photodetector measures how much of that light is reflected back. Blood
+volume in the microvascular tissue changes slightly with each heartbeat,
+which changes how much light gets absorbed versus reflected — and that
+subtle, rhythmic fluctuation is what the sensor interprets as a pulse.
+It's a genuinely clever, non-invasive technique, and the underlying
+principle is sound.
+
+<h2 id="why-the-wrist-struggles">Why the wrist specifically struggles</h2>
+
+The problem isn't the PPG technique itself — it's that the wrist is a
+particularly difficult location to apply it. Wrist skin sits over a
+combination of tendon, bone, and comparatively thin, mobile tissue, which
+makes the reflected-light signal more vulnerable to **motion artifacts**
+(the sensor picking up light changes from the wrist physically moving,
+not just blood volume changing) and to variable skin contact as the band
+shifts during activity. A chest strap, by contrast, uses direct
+**ECG (electrocardiogram)** electrodes reading the heart's actual
+electrical signal at the source, with stable skin contact against a
+flatter, less mobile part of the body — a fundamentally more direct and
+stable measurement.
+
+<h2 id="what-the-research-found">What peer-reviewed testing actually found</h2>
+
+Multiple independent, peer-reviewed studies comparing wrist PPG devices
+against ECG or chest-strap references have found consistent patterns:
+
+- A Cleveland Clinic study testing four popular wrist devices (Apple
+  Watch, Fitbit Blaze, Garmin Forerunner 235, TomTom Spark Cardio)
+  against a continuous 4-lead ECG and chest monitor across treadmill,
+  stationary bike, and elliptical activities found that wrist-worn
+  monitors were **less accurate than a standard chest strap**, and that
+  the devices could **both over- and underestimate** heart rate — not
+  a consistent one-directional bias.
+- A systematic review of chest-worn versus wrist-worn sensors found that
+  chest ECG devices (specifically citing the Polar H10) **maintain
+  accuracy across different exercise intensities**, while wrist PPG
+  devices show **larger errors, particularly in beat-to-beat analysis
+  and heart rate variability estimation**.
+- A study specifically testing accuracy across different physical
+  activities found accuracy dropping to its lowest levels (a concordance
+  correlation coefficient under 0.50 — meaningfully poor agreement)
+  during **short, high-intensity, full-body movements like burpees**,
+  attributing the drop specifically to motion artifacts.
+
+<Callout kind="verified" title="This is a physical limitation, not a specific brand's software failing">
+These findings held consistently across multiple studies and multiple
+brands (Apple, Fitbit, Garmin, TomTom, Polar, Whoop all appear across
+the cited research) — the pattern is a property of wrist-based PPG
+measurement generally, not a defect specific to any one manufacturer's
+implementation.
+</Callout>
+
+<h2 id="placement-matters">Placement matters as much as the device itself</h2>
+
+One of the more actionable findings across this research: **anatomical
+placement significantly affects accuracy**, independent of the specific
+device. Testing identical sensor units at different body positions found
+the **upper arm consistently outperforming the wrist and forearm**, with
+one study finding a forearm-mounted sensor (Verity Sense) and an
+upper-arm-worn device (Whoop) showing the closest agreement with a
+chest-strap reference among all positions tested. The upper arm has
+more stable, less mobile tissue and more consistent band pressure during
+activity than the wrist — the same fundamental issue that makes the
+wrist harder to measure accurately in the first place.
+
+<h2 id="when-accuracy-is-good">When wrist PPG is actually reliable</h2>
+
+The research is consistent on this point too: wrist PPG performs
+**well** in a specific, narrower set of conditions:
+
+- **At rest** — with minimal motion, wrist PPG has been found accurate
+  and reliable, with mean absolute error as low as **~3 bpm** against a
+  chest-strap reference in some testing.
+- **During steady-state, moderate exercise** (a consistent pace on a
+  bike or treadmill, no sudden intensity changes) — accuracy holds up
+  meaningfully better than during variable or high-intensity, full-body
+  movement.
+- **Data coverage** (the percentage of time a device reports a reading
+  within 10 bpm of a reference) has been measured as high as
+  **92–98%** across various activity types in some studies — meaning the
+  device is usually close, with accuracy problems concentrated in
+  specific harder conditions rather than being wrong all the time.
+
+<h2 id="the-clinical-verdict">The clinical verdict, from the people who need accuracy most</h2>
+
+For most fitness tracking — pacing a casual workout, monitoring general
+activity trends — the wrist's accuracy limitations during intense
+exercise are a minor inconvenience. For anyone managing a diagnosed
+heart condition, the clinical guidance is more direct: as one study's
+lead cardiologist put it, if you need to know your heart rate with
+precision — training within a doctor-set safe limit due to coronary
+artery disease or heart failure, for example — wrist-worn monitors are
+less accurate than a standard chest strap, and shouldn't be relied on
+as a substitute for one in that specific context.
+
+<h2 id="practical-guidance">Practical guidance for anyone tracking heart rate</h2>
+
+1. **Trust wrist PPG more at rest and during steady, moderate exercise**
+   than during high-intensity, full-body, or rapidly-changing activity.
+2. **Consider an upper-arm band over a wrist device** specifically if
+   accuracy during exercise matters to you — the research consistently
+   favors that placement.
+3. **Use a chest strap for anything safety-critical** — training near a
+   medically set heart-rate limit, or any use case where a real-time
+   accurate number matters more than a general trend.
+4. **Don't over-interpret single readings during erratic movement**
+   (burpees, boxing, rapid direction changes) — this is precisely where
+   every device type in the research showed its largest errors,
+   regardless of brand or price.
+
+<h2 id="bottom-line">Bottom line</h2>
+
+Wrist-based heart-rate tracking isn't inaccurate because of a specific
+brand cutting corners — the physical difficulty of getting a stable
+optical reading from a mobile, bony part of the body is a consistent
+limitation found across every major manufacturer in peer-reviewed
+testing. It's genuinely good at rest and during steady exercise, and
+genuinely less reliable during sudden, high-intensity, full-body
+movement — and if precise, medically relevant heart-rate data is what
+you need, the research points consistently toward a chest strap, not a
+firmware update, as the actual fix.

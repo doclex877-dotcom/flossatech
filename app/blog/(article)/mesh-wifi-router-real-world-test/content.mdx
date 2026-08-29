@@ -1,0 +1,166 @@
+import ArticleHeader from "@/components/ArticleHeader";
+import TOC from "@/components/TOC";
+import BarChart from "@/components/BarChart";
+import Callout from "@/components/Callout";
+
+<ArticleHeader
+  title="Mesh Wi-Fi Routers: Lab-Rated Speeds vs. What Your Walls Do to Them"
+  dek="An AX6000 or BE18000 rating describes a theoretical ceiling. Your walls, floors, and ISP plan decide the number you actually get."
+  category="Networking"
+  date="2026-09-08"
+  readMins={18}
+  verdictScore={82}
+/>
+
+<TOC
+  items={[
+    { id: "the-headline-number", text: "What the headline number (AX6000, BE18000) is actually rating" },
+    { id: "wall-attenuation", text: "How much your walls actually cost you" },
+    { id: "wan-ceiling", text: "The ceiling nothing in the router can raise" },
+    { id: "real-tests", text: "What real, disclosed-methodology testing found" },
+    { id: "mesh-vs-single", text: "Why mesh systems specifically help with this problem" },
+    { id: "backhaul", text: "The spec that matters more than the headline number" },
+    { id: "reading-a-listing", text: "How to read a router listing" },
+    { id: "bottom-line", text: "Bottom line" },
+  ]}
+/>
+
+<h2 id="the-headline-number">What the headline number (AX6000, BE18000) is actually rating</h2>
+
+Router marketing numbers like AX6000 or BE18000 describe a **theoretical
+combined PHY (physical layer) data rate** — the sum of the maximum
+possible throughput across every radio band in the router, under ideal
+conditions, with no other traffic, no walls, and client devices that
+support every advertised feature. It's a real, standards-based
+calculation, not a fabricated marketing number — but it's measuring
+laboratory-best-case capacity, not what reaches a laptop two rooms away.
+
+<h2 id="wall-attenuation">How much your walls actually cost you</h2>
+
+Independent measurement of how different wall materials attenuate Wi-Fi
+signal shows a wide, material-dependent range:
+
+| Wall/floor material | Typical signal loss |
+|---|---|
+| Standard drywall (interior wall) | 5–10% signal loss, or roughly 3–5 dB |
+| Plaster walls (older construction) | 15–25% signal loss |
+| Brick veneer (single layer) | 30–40% signal loss |
+| Solid brick wall | 6–12 dB attenuation |
+| Rebar-reinforced concrete floor | 12–20 dB attenuation |
+
+<BarChart
+  title="Approximate signal loss by wall/floor material"
+  unit="%"
+  data={[
+    { label: "Drywall", value: 8 },
+    { label: "Plaster", value: 20 },
+    { label: "Brick veneer", value: 35, highlight: true },
+    { label: "Concrete + rebar", value: 55 },
+  ]}
+  sourceNote="Compiled from independent router-testing measurements of signal attenuation by construction material, 2026; figures are approximate and vary by thickness and specific material composition."
+/>
+
+That range explains why the same router can be rated a top performer in
+one review (typically tested in a wood-frame home or office) and a
+disappointment in someone's older brick or plaster-walled house — the
+router didn't change, the wall material the signal has to pass through
+did.
+
+<h2 id="wan-ceiling">The ceiling nothing in the router can raise</h2>
+
+Separate from wall attenuation, there's a hard ceiling that no router
+spec can exceed: **your actual internet plan's speed.** If your ISP
+delivers 500Mbps, a router rated AX6000 will not make your internet
+faster than 500Mbps — the Wi-Fi rating describes internal wireless
+network capacity between your router and your devices, not what arrives
+from your provider. A high-end router only matters once your **local
+network** — file transfers between devices, multiple simultaneous 4K
+streams, gaming with low local latency — is the actual bottleneck, not
+your internet plan itself.
+
+<Callout kind="note" title="Two separate numbers, often confused">
+"My internet is slow" and "my Wi-Fi is slow" are frequently the same
+complaint pointed at two different systems. A speed test run over Wi-Fi
+close to the router isolates your ISP plan; the same test run from a
+far bedroom isolates your router/mesh performance. Running both tells
+you which one to actually address.
+</Callout>
+
+<h2 id="real-tests">What real, disclosed-methodology testing found</h2>
+
+Reviewers who test specifically through worst-case construction (brick
+exteriors, concrete floors between stories) rather than typical
+wood-frame test houses have published concrete numbers worth citing:
+
+- One independent tester's two-story brick-house methodology measured
+  the **eero Pro 7** maintaining **1,687 Mbps through brick walls** —
+  notably strong performance for that specific obstacle type.
+- In a separate real-home test through a condo's concrete barriers, a
+  **TP-Link Deco X55 (Wi-Fi 6, AX3000-rated)** two-node setup delivered
+  **220–260 Mbps** throughout the space on a 300Mbps ISP plan — roughly
+  **85–90% utilization** of the underlying internet plan, despite the
+  concrete construction.
+
+<Callout kind="verified" title="Why the specific test conditions matter">
+Both of those results are meaningful specifically because the testers
+disclosed their wall material and measurement method. A "reached
+1,200Mbps in testing" claim without stating wall type, distance, and
+client device is close to unfalsifiable — the two examples above are
+useful precisely because they specify the obstacle.
+</Callout>
+
+<h2 id="mesh-vs-single">Why mesh systems specifically help with this problem</h2>
+
+A single traditional router has to push its entire signal through every
+wall between it and a distant room in one hop, compounding attenuation
+with distance. A mesh system's nodes place a fresh transmitter closer to
+each area of the home, so any single hop travels through fewer walls
+before reaching a client device. That's the entire mechanical reason
+mesh systems report more consistent coverage numbers across multi-room
+and multi-story homes than a single router of similar raw spec —
+it's a placement and hop-count advantage, not a difference in the
+underlying radio physics.
+
+<h2 id="backhaul">The spec that matters more than the headline number</h2>
+
+For mesh systems specifically, **backhaul** — the connection carrying
+traffic between mesh nodes themselves — matters more to real-world
+performance than the headline AX/BE rating:
+
+- **Wired backhaul** (an ethernet cable run between nodes) avoids
+  wireless attenuation between nodes entirely and is the most reliable
+  option where running a cable is feasible.
+- **Dedicated wireless backhaul band** — a separate radio band used only
+  for node-to-node traffic, kept apart from client device traffic —
+  prevents your devices' Wi-Fi use from competing with the mesh's own
+  internal communication.
+- **Shared-band wireless backhaul** (no dedicated band) can meaningfully
+  reduce effective client throughput, since the same radio resources are
+  splitting time between serving your devices and relaying data to other
+  nodes.
+
+<h2 id="reading-a-listing">How to read a router listing</h2>
+
+1. **Treat the AX/BE number as a ceiling, not a promise** — it describes
+   combined theoretical band capacity, not delivered throughput in your
+   specific home.
+2. **Check whether backhaul is wired-capable or has a dedicated wireless
+   band**, especially for mesh systems in larger or multi-story homes.
+3. **Match router capability to your actual ISP plan speed** — spending
+   more for a higher AX/BE rating than your internet plan can use only
+   helps local-network traffic (file transfers, local streaming), not
+   internet speed.
+4. **Look for testing that discloses wall material and distance**, not
+   just a peak number — the same router can produce wildly different
+   real results in a wood-frame house versus a brick or concrete one.
+
+<h2 id="bottom-line">Bottom line</h2>
+
+A router's headline speed rating and your actual experience are
+connected by two things no spec sheet number captures on its own: what
+your walls and floors are made of, and what your ISP plan actually
+delivers. Mesh systems address the wall problem by shortening each
+wireless hop, and checking backhaul type tells you whether that
+architecture is actually being used well — but no amount of spec-sheet
+AX or BE rating will get you past either a concrete floor or your
+internet plan's own ceiling.

@@ -1,0 +1,148 @@
+import ArticleHeader from "@/components/ArticleHeader";
+import TOC from "@/components/TOC";
+import BarChart from "@/components/BarChart";
+import Callout from "@/components/Callout";
+
+<ArticleHeader
+  title="Solar Phone Chargers: The Panel-Wattage Math Behind the Marketing Photos"
+  dek="A 30W solar panel rarely delivers 30W to your phone. Standard Test Conditions, cell efficiency, and where the rest of the power actually goes."
+  category="Accessories"
+  date="2026-09-23"
+  readMins={15}
+  verdictScore={80}
+/>
+
+<TOC
+  items={[
+    { id: "the-stc-catch", text: "The catch hiding in every wattage rating: STC" },
+    { id: "the-loss-chain", text: "The full loss chain, from sunlight to phone" },
+    { id: "cell-type", text: "Why cell type changes everything" },
+    { id: "real-numbers", text: "Real panels, real measured output" },
+    { id: "matching-panel-to-need", text: "Matching panel size to what you actually need" },
+    { id: "reading-a-listing", text: "How to read a solar charger listing" },
+    { id: "bottom-line", text: "Bottom line" },
+  ]}
+/>
+
+<h2 id="the-stc-catch">The catch hiding in every wattage rating: STC</h2>
+
+Nearly every solar charger's wattage rating — 15W, 25W, 30W — is measured
+under **Standard Test Conditions (STC)**: 1,000 watts per square meter of
+light intensity, a 25°C cell temperature, and the panel aimed directly
+at the light source. That's a real, standardized measurement, not a
+fabricated number — but it describes a laboratory best case that real
+outdoor conditions rarely match exactly. A panel rated 30W under STC
+typically delivers somewhere in the **18–24W range in strong midday
+summer sun**, and as little as **10–25% of its rated output under light
+cloud cover**.
+
+<h2 id="the-loss-chain">The full loss chain, from sunlight to phone</h2>
+
+Solar phone charging loses energy at four separate, cumulative stages
+between sunlight hitting the panel and power reaching your phone's
+battery:
+
+1. **Panel conversion:** photovoltaic cells convert roughly **20–25%**
+   of incoming sunlight into electricity (for monocrystalline cells —
+   see below for how this varies by cell type).
+2. **Charge controller:** the circuit regulating voltage and current for
+   safe charging loses roughly **5–10%**.
+3. **Battery charging:** charging a lithium-ion/lithium-polymer cell is
+   roughly **90% efficient**; the rest is lost as heat.
+4. **Output stage:** the boost converter raising battery voltage to
+   5V (or higher, for fast charging) over USB loses another
+   **10–15%** — the same voltage-conversion loss covered in our power
+   bank capacity guide.
+
+Stacked together, of every 100 units of solar energy hitting the panel,
+roughly **15–18 units** actually reach your phone.
+
+<BarChart
+  title="Where solar charging energy goes (illustrative, per 100 units of sunlight)"
+  unit=" units"
+  data={[
+    { label: "Lost: panel conversion", value: 77 },
+    { label: "Lost: controller + battery + output stage", value: 6 },
+    { label: "Reaches your phone", value: 17, highlight: true },
+  ]}
+  sourceNote="Illustrative breakdown based on commonly cited cumulative efficiency figures across each stage of solar phone charging: panel conversion (~20-25%), charge controller (~5-10% loss), battery charging (~90% efficient), and USB output boost conversion (~10-15% loss)."
+/>
+
+<h2 id="cell-type">Why cell type changes everything</h2>
+
+Not all solar cells convert sunlight at the same rate, and the
+difference is large enough to be the single biggest lever in a panel's
+real-world performance:
+
+| Cell type | Typical efficiency | Notes |
+|---|---|---|
+| Monocrystalline silicon | ~20–25% | Standard for portable chargers; performs better in overcast or partial shade |
+| Polycrystalline | ~15–18% | Needs a larger panel for the same output as monocrystalline |
+| Thin-film | Rarely above ~12% | Flexible and lightweight, but meaningfully less efficient — a trade-off worth making only if minimizing weight matters more than charging speed |
+
+<Callout kind="verified" title="A real example of efficiency mattering more than size">
+One tested 25W foldable panel using N-type monocrystalline cells reached
+a measured **25.4% efficiency** — high enough that reviewers found it
+outperformed larger, higher-wattage-rated panels using lower-efficiency
+cells. Efficiency, not the headline wattage number, determined which
+panel actually charged faster in the same real sunlight.
+</Callout>
+
+<h2 id="real-numbers">Real panels, real measured output</h2>
+
+Independent real-world testing of specific rated panels shows the STC-to-
+reality gap concretely:
+
+| Panel rating (STC) | Measured real-world output (strong midday sun) |
+|---|---|
+| 30W | 22–24W |
+| 25W (high-efficiency monocrystalline) | ~20W across both USB ports |
+| 10W | ~6–7W average |
+
+That's a meaningfully better ratio for the higher-efficiency panels than
+for cheaper, lower-efficiency ones at a similar rated wattage — which is
+exactly why two "25W" panels from different manufacturers can perform
+noticeably differently in the same sunlight.
+
+<h2 id="matching-panel-to-need">Matching panel size to what you actually need</h2>
+
+A typical smartphone draws roughly **5–10W** while charging (briefly more
+during early fast-charge negotiation). Working backward from the loss
+chain above:
+
+- **A 10W-rated panel** delivering ~6–7W real output can trickle-charge a
+  phone but isn't fast enough for full daily replenishment on its own.
+- **A 15W-rated panel** in good direct sun can charge a phone at close to
+  a standard wall-charger's pace — roughly 1–2 hours for a full charge.
+- **A 25–30W-rated panel** is worth the extra size and weight mainly if
+  you also want to recharge a power bank simultaneously, or charge
+  multiple devices across a multi-day trip.
+
+<h2 id="reading-a-listing">How to read a solar charger listing</h2>
+
+1. **Treat the headline wattage as an STC lab figure**, not a guaranteed
+   field result — expect roughly 60–80% of it in strong direct sun, and
+   considerably less under cloud cover.
+2. **Check the cell type** (monocrystalline, polycrystalline, thin-film)
+   — it predicts real performance better than wattage alone, especially
+   comparing two similarly rated panels.
+3. **Look for a stated USB output voltage/amperage** (e.g., "USB-C PD
+   18W" or "5V/3A") rather than trusting the panel's peak wattage rating
+   alone — the port's actual negotiated output is what your phone
+   receives.
+4. **Pair a solar panel with a power bank for realistic daily use**,
+   rather than expecting direct-to-phone charging to fully replace wall
+   charging — charging the bank during peak sun and drawing from it
+   later avoids the slowdowns caused by clouds, shade, and a moving sun
+   angle.
+
+<h2 id="bottom-line">Bottom line</h2>
+
+A solar charger's wattage rating is a real, standardized lab measurement
+— just one taken under conditions your backyard or trailhead will rarely
+match exactly. Between STC-to-real-sun losses and the same
+voltage-conversion losses that affect every USB power bank, expect
+somewhere around 60–80% of the rated wattage in genuinely strong direct
+sun, and cell type (not the headline wattage number) as the better
+predictor of which specific panel will actually perform well against
+another one rated similarly.
