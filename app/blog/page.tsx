@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Metadata } from "next";
 import { articles } from "@/lib/articles";
 import VerdictDial from "@/components/VerdictDial";
+import { getCategoryImage } from "@/lib/categoryImages";
 
 export const metadata: Metadata = {
   title: "All Reviews & Guides",
@@ -29,26 +31,40 @@ export default async function BlogIndex({
       </p>
 
       <div className="grid md:grid-cols-2 gap-6 mb-16">
-        {published.map((a) => (
-          <Link
-            key={a.slug}
-            href={`/blog/${a.slug}`}
-            className="group border-2 border-[var(--color-ink)] p-6 bg-white hover:bg-[var(--color-paper-2)] transition-colors flex gap-4"
-          >
-            <div className="flex-1">
-              <div className="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-signal)] mb-2">
-                {a.category}
+        {published.map((a) => {
+          const img = getCategoryImage(a.category);
+          return (
+            <Link
+              key={a.slug}
+              href={`/blog/${a.slug}`}
+              className="group border-2 border-[var(--color-ink)] bg-white hover:bg-[var(--color-paper-2)] transition-colors overflow-hidden flex flex-col"
+            >
+              <div className="relative w-full aspect-[16/9]">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 480px"
+                />
               </div>
-              <h2 className="font-[var(--font-display)] uppercase text-2xl leading-tight mb-2 group-hover:text-[var(--color-signal-dim)]">
-                {a.title}
-              </h2>
-              <p className="text-sm text-[var(--color-muted)]">{a.dek}</p>
-            </div>
-            {typeof a.verdictScore === "number" && (
-              <VerdictDial score={a.verdictScore} label="Value" size={80} />
-            )}
-          </Link>
-        ))}
+              <div className="p-6 flex gap-4">
+                <div className="flex-1">
+                  <div className="font-[var(--font-mono)] text-xs uppercase tracking-widest text-[var(--color-signal)] mb-2">
+                    {a.category}
+                  </div>
+                  <h2 className="font-[var(--font-display)] uppercase text-2xl leading-tight mb-2 group-hover:text-[var(--color-signal-dim)]">
+                    {a.title}
+                  </h2>
+                  <p className="text-sm text-[var(--color-muted)]">{a.dek}</p>
+                </div>
+                {typeof a.verdictScore === "number" && (
+                  <VerdictDial score={a.verdictScore} label="Value" size={80} />
+                )}
+              </div>
+            </Link>
+          );
+        })}
         {published.length === 0 && (
           <p className="text-[var(--color-muted)]">No published articles in this category yet.</p>
         )}

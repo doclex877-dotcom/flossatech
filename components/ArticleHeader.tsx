@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import VerdictDial from "./VerdictDial";
+import { getCategoryImage } from "@/lib/categoryImages";
 
 export default function ArticleHeader({
   title,
@@ -20,9 +22,20 @@ export default function ArticleHeader({
 }) {
   const fmt = (d: string) =>
     new Date(d).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+  const image = getCategoryImage(category);
 
   return (
     <header className="not-prose mb-8">
+      <div className="relative w-full aspect-[16/7] mb-6 border-2 border-[var(--color-ink)] bg-[var(--color-paper-2)] overflow-hidden">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 768px"
+          priority
+        />
+      </div>
       <Link
         href={`/blog?category=${encodeURIComponent(category)}`}
         className="font-[var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[var(--color-signal)]"
