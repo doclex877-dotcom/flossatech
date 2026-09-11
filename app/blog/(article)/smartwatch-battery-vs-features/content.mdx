@@ -43,9 +43,10 @@ underlying screen technology:
 - **AMOLED displays** (Apple Watch, Samsung Galaxy Watch, most Wear OS
   watches) have to keep individual pixels actively lit to show anything
   at all times. Reviewers commonly report AOD adding **25–35% additional
-  battery drain** on AMOLED watches — on a Samsung Galaxy Watch Ultra,
-  turning AOD off has been reported to add a full **two extra days** of
-  runtime.
+  battery drain** on AMOLED watches — a concrete example: Garmin's own
+  published specifications for the Tactix 7 AMOLED show battery life
+  dropping from **31 days to 11 days** when AOD is enabled, a roughly
+  65% reduction.
 - **MIP (memory-in-pixel) displays** — used on Garmin's Enduro, Instinct,
   and most COROS watches — work completely differently: each pixel
   "remembers" its state and only redraws when content changes, using
@@ -117,8 +118,8 @@ conservative to cover worst-case usage:
 
 | Watch | Manufacturer claim | Independent testing found |
 |---|---|---|
-| Google Pixel Watch 4 (45mm) | Up to 40 hours (AOD on) | Exceeded the official rating in review testing |
-| Garmin Enduro 3 | 36 days (smartwatch mode) | 28–32 days with HR monitoring + GPS sessions logged |
+| Google Pixel Watch 4 (45mm) | Up to 40 hours (AOD on) | Just over 48 hours in one independent review — exceeded the official rating |
+| Garmin Enduro 3 | 36 days (smartwatch mode) | ~26 days in one independent long-term review, based on tracked battery drain over 16 days |
 | Amazfit T-Rex 3 | 27 days (standard use) | Independently confirmed in the same range |
 
 <Callout kind="caveat" title="Manufacturer ratings aren't always inflated">
@@ -159,3 +160,10 @@ you turn on the specific combination of features you actually use — which
 is exactly why matching display technology and sensor habits to your own
 priorities matters more than chasing the single biggest number on the
 spec sheet.
+
+## Sources
+
+- [Garmin refreshes Tactix 7 smartwatch series with new AMOLED model](https://www.notebookcheck.net/Garmin-refreshes-Tactix-7-smartwatch-series-with-new-AMOLED-model.752805.0.html) — Notebookcheck, source of the Tactix 7's 31-day to 11-day AOD battery figures
+- [Google Pixel Watch 4 Review: Smarter, Sleeker, and So Close to Greatness](https://www.outsideonline.com/outdoor-gear/tools/google-pixel-watch-4-review/) — Outside, independent testing showing the Pixel Watch 4 exceeding Google's official rating
+- [Garmin Enduro 3 smartwatch review: World-class stamina](https://www.livescience.com/health/exercise/garmin-enduro-3-review) — Live Science, the independent long-term battery test referenced in this article
+

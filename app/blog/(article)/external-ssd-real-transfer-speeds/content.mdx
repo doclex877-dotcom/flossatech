@@ -100,12 +100,15 @@ doesn't.
 <h2 id="a-real-example">The same drive, two ports, very different numbers</h2>
 
 A concrete illustration of how much a single mismatched link can cost:
-one tested configuration put a 2TB NVMe SSD in a Thunderbolt 3 enclosure,
-measuring **3,200 MB/s** on a laptop with a supporting Thunderbolt port —
-and just **950 MB/s** on the identical drive and enclosure connected via
-a USB 3.2 Gen 2 port instead. Same drive, same enclosure, same data —
-roughly a **70% drop** purely from the port on the other end of the
-cable.
+one independent test measured a Thunderbolt 3-enclosed NVMe SSD (a
+Samsung 980 PRO) reaching roughly **2,500 MB/s**, compared to a
+comparable SATA SSD topping out around **500–600 MB/s** on a USB 3.1
+Gen 2 connection in the same test — a difference driven as much by the
+interface ceiling as by the drives themselves. Separately, real-world
+Crucial SSD testing found USB 3.2 Gen 2 (10Gbps) reaching close to
+**800 MB/s**, against roughly **400 MB/s** for the same class of drive
+over USB 3.2 Gen 1 (5Gbps) — almost exactly double, tracking the
+doubled theoretical bandwidth between the two USB generations.
 
 <h2 id="when-it-actually-matters">When this actually matters for real work</h2>
 
@@ -147,3 +150,9 @@ quality) is frequently the actual limiting factor, not the SSD's own
 hardware, which is exactly why the same drive can post dramatically
 different real-world numbers depending on nothing more than which port
 it's plugged into.
+
+## Sources
+
+- [External SSD Enclosures: USB 3.1 Vs Thunderbolt Speed Tests](https://consoleaccessoryhub.com/external-ssd-enclosures-usb-3-1-vs-thunderbolt-speed-tests/) — source of the Thunderbolt 3 vs. USB 3.1 real-world throughput comparison referenced in this article
+- [USB 3.2 Speed Comparison & Real-world Performance](https://www.everythingusb.com/speed.html) — source of the Crucial SSD USB 3.2 Gen 1 vs. Gen 2 real-world throughput figures referenced in this article
+

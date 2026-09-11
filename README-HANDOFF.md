@@ -12,6 +12,20 @@ ready to deploy on Vercel with your own AdSense account.
   real research — manufacturer datasheets, regulatory standards like
   IEC 60529 and USB-IF specs, peer-reviewed studies, and named outlets'
   disclosed testing methodology). Full list in `lib/articles.ts`.
+- **Every article ends with a "Sources" section of real, verified
+  hyperlinks** (44 total across the 20 articles) — added in a dedicated
+  pass specifically because AdSense rejected the site for "low value
+  content" and the articles' claims weren't independently verifiable by
+  clicking through. Each link was re-checked via live search against
+  the actual claim it supports; three articles had real inaccuracies
+  caught and corrected during this pass (not just linked around) —
+  see git history on `best-laptops-for-students-2026`,
+  `smartwatch-battery-vs-features`, and `budget-vs-flagship-camera-phone`
+  if you want the specifics. If you add more articles later, keep this
+  standard: find the real source first, then write the claim to match
+  it — not the other way around.
+- **`app/sitemap.ts` and `app/robots.ts`** — added for the same
+  resubmission push; helps Google fully index all 20 articles.
 - **Full legal page set**: Privacy Policy, Cookie Policy, Terms of
   Service, Editorial Policy, Affiliate Disclosure — all AdSense-aware
   (mention ad cookies, opt-out links, etc.) but marked as templates that
